@@ -1,9 +1,15 @@
-// components/Navbar.tsx
-
 import Link from "next/link";
-import React from "react";
-
+import { useState } from "react";
+import { Login } from "../Login/page";
 const Navbar: React.FC = () => {
+  const [modal, setModal] = useState(false);
+  const onModalOpen = () => {
+    setModal(true);
+  };
+  const onModalClose = () => {
+    setModal(false);
+  };
+
   return (
     <nav
       className="flex
@@ -23,13 +29,13 @@ const Navbar: React.FC = () => {
         </li>
       </ul>
       {/* right */}
-      <ul className="flex justify-end w-1/2">
-        <li>
-          <Link href="/profile">
-            <ul>profile</ul>
-          </Link>
+      <ul className="flex justify-end w-1/2 cursor-pointer">
+        <li onClick={onModalOpen}>
+          {" "}
+          <ul>profile</ul>
         </li>
       </ul>
+      {modal && <Login showModal={true} closeModal={onModalClose} />}
     </nav>
   );
 };
