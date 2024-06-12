@@ -14,7 +14,7 @@ interface DropdownState {
   closeModal: () => void;
 }
 export const Login: React.FC<DropdownState> = ({ showModal, closeModal }) => {
-  const [phone, setPhone] = useState("+351");
+  //   const [phone, setPhone] = useState("+351");
 
   return (
     <>
