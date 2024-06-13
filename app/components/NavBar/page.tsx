@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
-import { Login } from "../Login/page";
+import { LoginPage } from "../../pages/login";
 const Navbar: React.FC = () => {
   const [modal, setModal] = useState(false);
   const onModalOpen = () => {
@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
           <ul>profile</ul>
         </li>
       </ul>
-      {modal && <Login showModal={true} closeModal={onModalClose} />}
+      {modal && <LoginPage showModal={true} closeModal={onModalClose} />}
     </nav>
   );
 };
