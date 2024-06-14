@@ -1,12 +1,7 @@
+"use client";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import axios from "axios";
-
-export const SignUpPage: React.FC = () => {
-  // redirect to login page
-  const router = useRouter();
-
+const SignUpPage: React.FC = () => {
   const [user, setUser] = React.useState({
     username: "",
     email: "",
@@ -16,20 +11,6 @@ export const SignUpPage: React.FC = () => {
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
 
   const [loading, setLoading] = React.useState(false);
-
-  const onSignUp = async () => {
-    try {
-      setLoading(true);
-
-      const response = await axios.post("/api/users/signup", user);
-
-      router.push("/login");
-    } catch (error: any) {
-      console.log("Failed to sign up the user", error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   useEffect(() => {
     if (
@@ -43,7 +24,7 @@ export const SignUpPage: React.FC = () => {
     }
   }, [user]);
 
-  console.log(user);
+  //  console.log(user);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -82,14 +63,14 @@ export const SignUpPage: React.FC = () => {
         {buttonDisabled ? "Sign Up" : "Register My Account Now"}
       </button>
 
-      <Link href="/login">
+      {/* <Link href="/login">
         <p className="mt-10">
           Do you have a free account already?{" "}
           <span className="font-bold text-green-600 ml-2 cursor-pointer underline">
             Login to your account
           </span>
         </p>
-      </Link>
+      </Link> */}
 
       <Link href="/">
         <h3 className="mt-8 opacity-50">
@@ -99,3 +80,4 @@ export const SignUpPage: React.FC = () => {
     </div>
   );
 };
+export default SignUpPage;

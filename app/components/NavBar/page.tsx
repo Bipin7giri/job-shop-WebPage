@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
-import { LoginPage } from "../../pages/login";
+import LoginPage from "@/app/login/page";
 const Navbar: React.FC = () => {
   const [modal, setModal] = useState(false);
   const onModalOpen = () => {

@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -7,33 +8,24 @@ interface propsLogin {
   showModal: boolean;
   closeModal: () => void;
 }
-export const LoginPage: React.FC<propsLogin> = ({ showModal, closeModal }) => {
+const LoginPage: React.FC<propsLogin> = ({ showModal, closeModal }) => {
   const router = useRouter();
   const [user, setUser] = React.useState({ email: "", password: "" });
 
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
-  // const onLogin = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const response = await axios.post("api/users/login", user);
-  //     console.log("Login successful", response.data);
-  //     router.push("/profile");
-  //   } catch (error: any) {
-  //     console.log("Login failed", error.message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   useEffect(() => {
     if (user.email.length > 0 && user.password.length > 0) {
       setButtonDisabled(false);
+      setLoading(false);
     } else {
       setButtonDisabled(true);
     }
   }, [user]);
+  const onLoading = () => {
+    setLoading(true);
+  };
   return (
     <>
       {showModal && (
@@ -71,7 +63,7 @@ export const LoginPage: React.FC<propsLogin> = ({ showModal, closeModal }) => {
           `}
             >
               <div className="    lg:h-auto md:h-auto border-0  rounded-lg  shadow-lg  relative   flex  flex-col   w-full  bg-white outline-none  focus:outline-none">
-                <div className=" flex   items-center  p-6   bg-red-200  rounded-t  justify-center  relative border-b-[1px]">
+                <div className=" flex   items-center  p-6 mb-6   bg-blue-200  rounded-t  justify-center  relative border-b-[1px]">
                   <button
                     className=" p-1 border-0 hover:opacity-70 transition absolute left-5"
                     title="Close"
@@ -81,14 +73,12 @@ export const LoginPage: React.FC<propsLogin> = ({ showModal, closeModal }) => {
                   </button>
                   <div className="text-lg font-semibold ">
                     {" "}
-                    {loading ? "We're logging you in..." : "Login"}
+                    <h1>Login</h1>
                   </div>
                 </div>
-                <div className="flex flex-col items-center justify-center min-h-screen py-2">
-                  {/* <h1 className="py-10 mb-10 text-5xl">
-                    {loading ? "We're logging you in..." : "Account Login"}
-                  </h1> */}
-
+                {/* content */}
+                <div className="flex flex-col items-center justify-center ">
+                  {/* email */}
                   <input
                     className="w-[350px] text-slate-800 p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
                     id="email"
@@ -99,7 +89,7 @@ export const LoginPage: React.FC<propsLogin> = ({ showModal, closeModal }) => {
                     }
                     placeholder="Your Email..."
                   />
-
+                  {/* password */}
                   <input
                     className="w-[350px] text-slate-800 p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
                     id="password"
@@ -111,8 +101,11 @@ export const LoginPage: React.FC<propsLogin> = ({ showModal, closeModal }) => {
                     placeholder="Your Password..."
                   />
 
-                  <button className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 uppercase px-40 py-3 mt-10 font-bold">
-                    Login
+                  <button
+                    onClick={onLoading}
+                    className=" w-[350px] p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 uppercase  py-5 mt-5 font-bold"
+                  >
+                    {loading ? "logging in....." : "Login"}
                   </button>
 
                   <Link href="/signUp">
@@ -125,7 +118,7 @@ export const LoginPage: React.FC<propsLogin> = ({ showModal, closeModal }) => {
                   </Link>
 
                   <Link href="/">
-                    <h3 className="mt-8 opacity-50">
+                    <h3 className="m-8 opacity-50">
                       <p className="inline mr-1" /> Back to the Homepage
                     </h3>
                   </Link>
@@ -138,3 +131,4 @@ export const LoginPage: React.FC<propsLogin> = ({ showModal, closeModal }) => {
     </>
   );
 };
+export default LoginPage;
