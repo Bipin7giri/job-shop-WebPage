@@ -1,15 +1,12 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import axios from "axios";
 import { IoClose } from "react-icons/io5";
 interface propsLogin {
   showModal: boolean;
   closeModal: () => void;
 }
 const LoginPage: React.FC<propsLogin> = ({ showModal, closeModal }) => {
-  const router = useRouter();
   const [user, setUser] = React.useState({ email: "", password: "" });
 
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
@@ -108,14 +105,14 @@ const LoginPage: React.FC<propsLogin> = ({ showModal, closeModal }) => {
                     {loading ? "logging in....." : "Login"}
                   </button>
 
-                  <Link href="/signUp">
+                  {/* <Link href="/signUp">
                     <p className="mt-10">
                       Do not have an account yet?
                       <span className="font-bold text-green-600 ml-2 cursor-pointer underline">
                         Register your free account now
                       </span>
                     </p>
-                  </Link>
+                  </Link> */}
 
                   <Link href="/">
                     <h3 className="m-8 opacity-50">

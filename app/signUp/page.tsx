@@ -1,7 +1,16 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect } from "react";
+import LoginPage from "../login/page";
 const SignUpPage: React.FC = () => {
+  const [modal, setModal] = React.useState(false);
+  const onModalOpen = () => {
+    setModal(true);
+  };
+  const onModalClose = () => {
+    setModal(false);
+  };
+
   const [user, setUser] = React.useState({
     username: "",
     email: "",
@@ -63,15 +72,13 @@ const SignUpPage: React.FC = () => {
         {buttonDisabled ? "Sign Up" : "Register My Account Now"}
       </button>
 
-      {/* <Link href="/login">
-        <p className="mt-10">
-          Do you have a free account already?{" "}
-          <span className="font-bold text-green-600 ml-2 cursor-pointer underline">
-            Login to your account
-          </span>
-        </p>
-      </Link> */}
-
+      <p onClick={onModalOpen} className="mt-10">
+        Do you have a free account already?{" "}
+        <span className="font-bold text-green-600 ml-2 cursor-pointer underline">
+          Login to your account
+        </span>
+      </p>
+      {modal && <LoginPage showModal={true} closeModal={onModalClose} />}
       <Link href="/">
         <h3 className="mt-8 opacity-50">
           <p className="inline mr-1"> Back to the Homepage</p>
