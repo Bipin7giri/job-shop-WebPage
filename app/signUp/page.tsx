@@ -26,6 +26,7 @@ const SignUpPage: React.FC = () => {
       user.username.length > 0 &&
       user.email.length > 0 &&
       user.password.length > 0
+      //  if the password,email and username doesnot matches
     ) {
       setButtonDisabled(false);
     } else {
@@ -33,11 +34,9 @@ const SignUpPage: React.FC = () => {
     }
   }, [user]);
 
-  //  console.log(user);
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1 className="py-10 mb-10 text-5xl">
+      <h1 className="py-6 mb-10 text-5xl">
         {loading ? "Processing..." : "Free Sign Up"}
       </h1>
 
@@ -47,7 +46,7 @@ const SignUpPage: React.FC = () => {
         type="text"
         value={user.username}
         onChange={(e) => setUser({ ...user, username: e.target.value })}
-        placeholder="Your Username..."
+        placeholder="Username"
       />
 
       <input
@@ -56,7 +55,7 @@ const SignUpPage: React.FC = () => {
         type="text"
         value={user.email}
         onChange={(e) => setUser({ ...user, email: e.target.value })}
-        placeholder="Your Email..."
+        placeholder="Your Email/Phone Number"
       />
 
       <input
@@ -65,14 +64,22 @@ const SignUpPage: React.FC = () => {
         type="password"
         value={user.password}
         onChange={(e) => setUser({ ...user, password: e.target.value })}
-        placeholder="Your Password..."
+        placeholder="Password"
+      />
+      <input
+        className="w-[350px] text-slate-800 p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+        id="password"
+        type="password"
+        value={user.password}
+        onChange={(e) => setUser({ ...user, password: e.target.value })}
+        placeholder="Confirm Password"
       />
 
-      <button className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 uppercase px-40 py-3 mt-10 font-bold">
+      <button className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 uppercase px-40 py-3 mt-5 font-bold">
         {buttonDisabled ? "Sign Up" : "Register My Account Now"}
       </button>
 
-      <p onClick={onModalOpen} className="mt-10">
+      <p onClick={onModalOpen} className="mt-5">
         Do you have a free account already?{" "}
         <span className="font-bold text-green-600 ml-2 cursor-pointer underline">
           Login to your account

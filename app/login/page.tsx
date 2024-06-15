@@ -15,13 +15,19 @@ const LoginPage: React.FC<propsLogin> = ({ showModal, closeModal }) => {
   useEffect(() => {
     if (user.email.length > 0 && user.password.length > 0) {
       setButtonDisabled(false);
-      setLoading(false);
     } else {
       setButtonDisabled(true);
     }
   }, [user]);
   const onLoading = () => {
-    setLoading(true);
+    if (user.email.length > 0 && user.password.length > 0) {
+      //  setButtonDisabled(true);
+      setLoading(true);
+      setButtonDisabled(false);
+    } else {
+      setLoading(false);
+      setButtonDisabled(true);
+    }
   };
   return (
     <>
@@ -102,7 +108,7 @@ const LoginPage: React.FC<propsLogin> = ({ showModal, closeModal }) => {
                     onClick={onLoading}
                     className=" w-[350px] p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 uppercase  py-5 mt-5 font-bold"
                   >
-                    {loading ? "logging in....." : "Login"}
+                    {loading ? "Logging in....." : "log in"}
                   </button>
 
                   {/* <Link href="/signUp">
