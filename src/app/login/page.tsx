@@ -12,13 +12,6 @@ const LoginPage: React.FC<propsLogin> = ({ showModal, closeModal }) => {
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
-  useEffect(() => {
-    if (user.email.length > 0 && user.password.length > 0) {
-      setButtonDisabled(false);
-    } else {
-      setButtonDisabled(true);
-    }
-  }, [user]);
   const onLoading = () => {
     if (user.email.length > 0 && user.password.length > 0) {
       //  setButtonDisabled(true);
@@ -29,6 +22,13 @@ const LoginPage: React.FC<propsLogin> = ({ showModal, closeModal }) => {
       setButtonDisabled(true);
     }
   };
+  useEffect(() => {
+    if (user.email.length > 0 && user.password.length > 0) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [user]);
   return (
     <>
       {showModal && (
