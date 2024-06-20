@@ -82,10 +82,12 @@ const SignUpPage: React.FC = () => {
       <p onClick={onModalOpen} className="mt-5">
         Do you have a free account already?{" "}
         <span className="font-bold text-green-600 ml-2 cursor-pointer underline">
-          Login to your account
+          <Link href="/login">
+            <p>Login</p>
+          </Link>
         </span>
       </p>
-      {modal && <LoginPage showModal={true} closeModal={onModalClose} />}
+
       <Link href="/">
         <h3 className="mt-8 opacity-50">
           <p className="inline mr-1"> Back to the Homepage</p>
