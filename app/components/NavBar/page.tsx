@@ -95,28 +95,32 @@ const NavBar = () => {
               </UnstyledButton>
             </Menu.Target>
             <Menu.Dropdown>
-              <Menu.Item
-                leftSection={
-                  <IconHeart
-                    style={{ width: rem(16), height: rem(16) }}
-                    color={theme.colors.red[6]}
-                    stroke={1.5}
-                  />
-                }
-              >
-                <Link href="/signUp">Sign Up</Link>
-              </Menu.Item>
-              <Menu.Item
-                leftSection={
-                  <IconStar
-                    style={{ width: rem(16), height: rem(16) }}
-                    color={theme.colors.yellow[6]}
-                    stroke={1.5}
-                  />
-                }
-              >
-                <Link href="/login">Login</Link>
-              </Menu.Item>
+              <Link href="/signUp">
+                <Menu.Item
+                  leftSection={
+                    <IconHeart
+                      style={{ width: rem(16), height: rem(16) }}
+                      color={theme.colors.red[6]}
+                      stroke={1.5}
+                    />
+                  }
+                >
+                  Sign Up
+                </Menu.Item>
+              </Link>
+              <Link href="/login">
+                <Menu.Item
+                  leftSection={
+                    <IconStar
+                      style={{ width: rem(16), height: rem(16) }}
+                      color={theme.colors.yellow[6]}
+                      stroke={1.5}
+                    />
+                  }
+                >
+                  Login
+                </Menu.Item>
+              </Link>
               {/* <Menu.Item
                 leftSection={
                   <IconMessage
