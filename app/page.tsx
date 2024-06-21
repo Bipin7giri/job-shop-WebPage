@@ -4,6 +4,7 @@
 import "@mantine/core/styles.css";
 import NavBar from "./components/NavBar/page";
 
+
 import type { AppProps } from "next/app";
 import { createTheme, MantineProvider } from "@mantine/core";
 

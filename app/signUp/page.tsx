@@ -1,8 +1,11 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import LoginPage from "../login/page";
+import { SegmentedControl } from "@mantine/core";
 const SignUpPage: React.FC = () => {
+  const [section, setSection] = React.useState<"Employer" | "Employee">(
+    "Employer"
+  );
   const [modal, setModal] = React.useState(false);
   const onModalOpen = () => {
     setModal(true);
@@ -19,8 +22,6 @@ const SignUpPage: React.FC = () => {
 
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
 
-  const [loading, setLoading] = React.useState(false);
-
   useEffect(() => {
     if (
       user.username.length > 0 &&
@@ -36,9 +37,21 @@ const SignUpPage: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1 className="py-6 mb-10 text-5xl">
-        {loading ? "Processing..." : "Free Sign Up"}
-      </h1>
+      <nav className="">
+        <div>
+          <SegmentedControl
+            value={section}
+            onChange={(value: any) => setSection(value)}
+            transitionTimingFunction="ease"
+            fullWidth
+            data={[
+              { label: "Employer", value: "Employer" },
+              { label: "Employee", value: "Employee" },
+            ]}
+          />
+        </div>
+      </nav>
+      <h1 className="py-6 mb-10 text-5xl">Free Sign Up</h1>
 
       <input
         className="w-[350px] text-slate-800 p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
