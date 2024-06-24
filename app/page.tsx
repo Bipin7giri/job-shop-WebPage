@@ -3,6 +3,7 @@
 // All packages except `@mantine/hooks` require styles imports
 import "@mantine/core/styles.css";
 import NavBar from "./components/NavBar/navBar";
+import JobsCard from "./components/Job/jobCard";
 
 import type { AppProps } from "next/app";
 import { createTheme, MantineProvider } from "@mantine/core";
@@ -15,6 +16,7 @@ export default function App({ pageProps }: AppProps) {
   return (
     <MantineProvider theme={theme}>
       <NavBar {...pageProps} />
+      <JobsCard {...pageProps} />
     </MantineProvider>
   );
 }

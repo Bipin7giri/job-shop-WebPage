@@ -1,7 +1,7 @@
 import cx from "clsx";
 import { useState } from "react";
-import { useRouter } from "next/router";
 import Link from "next/link";
+
 import {
   Container,
   Avatar,
@@ -50,6 +50,7 @@ const NavBar = () => {
   const theme = useMantineTheme();
   const [opened, { toggle }] = useDisclosure(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);
+ 
 
   const items = tabs.map((tab) => (
     <Tabs.Tab value={tab} key={tab}>
@@ -96,8 +97,9 @@ const NavBar = () => {
               </UnstyledButton>
             </Menu.Target>
             <Menu.Dropdown>
-              <Link href="/signUp">
+              <Link href="/components/signUp" passHref>
                 <Menu.Item
+                  component="a"
                   leftSection={
                     <IconHeart
                       style={{ width: rem(16), height: rem(16) }}
@@ -109,8 +111,9 @@ const NavBar = () => {
                   Sign Up
                 </Menu.Item>
               </Link>
-              <Link href="/login">
+              <Link href="/components/login" passHref onClick={open}>
                 <Menu.Item
+                  component="a"
                   leftSection={
                     <IconStar
                       style={{ width: rem(16), height: rem(16) }}
