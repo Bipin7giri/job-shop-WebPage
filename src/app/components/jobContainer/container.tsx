@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import api from "@/app/api"; // Adjust the import path as necessary
 import JobCard from "./jobCard";
 
-const DataDisplayComponent = () => {
+const Container = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -40,11 +40,11 @@ const DataDisplayComponent = () => {
       <h1>Job Lists</h1>
       <ul>
         {data.map((item) => (
-          <JobCard key={} />
+          <JobCard key={item} />
         ))}
       </ul>
     </div>
   );
 };
 
-export default DataDisplayComponent;
+export default Container;
