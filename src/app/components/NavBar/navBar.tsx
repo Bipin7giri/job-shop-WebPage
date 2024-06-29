@@ -50,7 +50,6 @@ const NavBar = () => {
   const theme = useMantineTheme();
   const [opened, { toggle }] = useDisclosure(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);
- 
 
   const items = tabs.map((tab) => (
     <Tabs.Tab value={tab} key={tab}>
@@ -97,7 +96,7 @@ const NavBar = () => {
               </UnstyledButton>
             </Menu.Target>
             <Menu.Dropdown>
-              <Link href="/components/signUp" passHref>
+              <Link href="/components/SignUp" passHref>
                 <Menu.Item
                   component="a"
                   leftSection={
@@ -111,7 +110,7 @@ const NavBar = () => {
                   Sign Up
                 </Menu.Item>
               </Link>
-              <Link href="/components/login" passHref onClick={open}>
+              <Link href="/components/Login" passHref>
                 <Menu.Item
                   component="a"
                   leftSection={
