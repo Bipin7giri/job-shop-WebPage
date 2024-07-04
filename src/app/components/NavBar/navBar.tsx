@@ -25,6 +25,12 @@ import {
   IconTrash,
   IconSwitchHorizontal,
   IconChevronDown,
+  IconHelp,
+  IconStatusChange,
+  IconPassword,
+  IconLanguage,
+  IconPasswordFingerprint,
+  IconPasswordUser,
 } from "@tabler/icons-react";
 
 import classes from "./HeaderTabs.module.css";
@@ -96,7 +102,7 @@ const NavBar = () => {
               </UnstyledButton>
             </Menu.Target>
             <Menu.Dropdown>
-              <Link href="/components/SignUp" passHref>
+              {/*<Link href="/components/SignUp" passHref>
                 <Menu.Item
                   component="a"
                   leftSection={
@@ -123,8 +129,8 @@ const NavBar = () => {
                 >
                   Login
                 </Menu.Item>
-              </Link>
-              {/* <Menu.Item
+              </Link>*/}
+              <Menu.Item
                 leftSection={
                   <IconMessage
                     style={{ width: rem(16), height: rem(16) }}
@@ -133,31 +139,45 @@ const NavBar = () => {
                   />
                 }
               >
-                Your comments
-              </Menu.Item> */}
+                Notification
+              </Menu.Item>
+
+              <Menu.Item
+                leftSection={
+                  <IconLanguage
+                    style={{ width: rem(16), height: rem(16) }}
+                    stroke={1.5}
+                  />
+                }
+              >
+                Language
+              </Menu.Item>
+              <Menu.Item
+                leftSection={
+                  <IconPasswordUser
+                    style={{ width: rem(16), height: rem(16) }}
+                    stroke={1.5}
+                  />
+                }
+              >
+                Change Password
+              </Menu.Item>
+              <Menu.Item
+                leftSection={
+                  <IconHelp
+                    style={{ width: rem(16), height: rem(16) }}
+                    stroke={1.5}
+                  />
+                }
+              >
+                Help Center
+              </Menu.Item>
+
+              <Menu.Divider />
 
               <Menu.Label>Settings</Menu.Label>
               <Menu.Item
-                leftSection={
-                  <IconSettings
-                    style={{ width: rem(16), height: rem(16) }}
-                    stroke={1.5}
-                  />
-                }
-              >
-                Account settings
-              </Menu.Item>
-              <Menu.Item
-                leftSection={
-                  <IconSwitchHorizontal
-                    style={{ width: rem(16), height: rem(16) }}
-                    stroke={1.5}
-                  />
-                }
-              >
-                Change account
-              </Menu.Item>
-              <Menu.Item
+                color="red"
                 leftSection={
                   <IconLogout
                     style={{ width: rem(16), height: rem(16) }}
@@ -165,21 +185,7 @@ const NavBar = () => {
                   />
                 }
               >
-                Logout
-              </Menu.Item>
-
-              <Menu.Divider />
-
-              <Menu.Label>Danger zone</Menu.Label>
-              <Menu.Item
-                leftSection={
-                  <IconPlayerPause
-                    style={{ width: rem(16), height: rem(16) }}
-                    stroke={1.5}
-                  />
-                }
-              >
-                Pause subscription
+                Log Out
               </Menu.Item>
               <Menu.Item
                 color="red"
@@ -190,7 +196,7 @@ const NavBar = () => {
                   />
                 }
               >
-                Delete account
+                Delete Account
               </Menu.Item>
             </Menu.Dropdown>
           </Menu>
