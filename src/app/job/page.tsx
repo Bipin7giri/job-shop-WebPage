@@ -12,10 +12,12 @@ const Page = () => {
   }, [dispatch]);
 
   if (loading) {
+    debugger;
     return <div>Loading data...</div>;
   }
 
   if (error) {
+    debugger;
     return <div>Error: {error.message}</div>;
   }
 
