@@ -25,8 +25,8 @@ const Container = () => {
 
     fetchData();
   }, []);
-  // console.log(data);
-
+  /// call this api in in page  instead of container component it causing issue api called twice
+  // change the logic same as jobPage  try to use api call through redux sagas 
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -39,7 +39,7 @@ const Container = () => {
     <div>
       <h1>Job Lists</h1>
       <ul>
-        {data.map((item) => (
+        {data?.map((item) => (
           <JobCard key={item} />
         ))}
       </ul>
