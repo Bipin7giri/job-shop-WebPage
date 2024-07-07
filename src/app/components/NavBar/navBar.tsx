@@ -44,7 +44,7 @@ const user = {
 const tabs = [
   "Home",
   "Pricing",
-  "Education",
+  "CV FORM",
   "Community",
   "Forums",
   "Support",
