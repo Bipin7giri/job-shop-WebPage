@@ -1,23 +1,21 @@
 import React, { useEffect, useState } from "react";
-import api from "@/app/api"; // Adjust the import path as necessary
-import JobCard from "./jobCard";
+import api from "@/app/api";
 
-const Container = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
+import { Job } from "@/store/types";
+import Card from "./Card";
+
+const Container: React.FC = () => {
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get("/jobs");
-        setData(response.data);
-      } catch (error) {
-        if (error instanceof Error) {
-          setError(error);
-        } else {
-          setError(new Error("An unknown error occurred"));
-        }
+        const response = await api.get("/");
+        setJobs(response.data.data);
+      } catch (err: any) {
+        setError(err.message);
       } finally {
         setLoading(false);
       }
@@ -25,22 +23,16 @@ const Container = () => {
 
     fetchData();
   }, []);
-  /// call this api in in page  instead of container component it causing issue api called twice
-  // change the logic same as jobPage  try to use api call through redux sagas 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+  //console.log(jobs);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div>
-      <h1>Job Lists</h1>
+      <h1>Job Listings</h1>
       <ul>
-        {data?.map((item) => (
-          <JobCard key={item} />
+        {jobs.map((job) => (
+          <Card job={job} key={job.id} />
         ))}
       </ul>
     </div>
