@@ -3,7 +3,9 @@ import api from "@/app/api";
 
 import { Job } from "@/store/types";
 import Card from "./Card";
-
+import { Loader } from "@mantine/core";
+import { SimpleGrid } from "@mantine/core";
+import JobCard from "./jobCard";
 const Container: React.FC = () => {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -24,17 +26,28 @@ const Container: React.FC = () => {
     fetchData();
   }, []);
   //console.log(jobs);
-  if (loading) return <p>Loading...</p>;
+
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div>
-      <h1>Job Listings</h1>
-      <ul>
-        {jobs.map((job) => (
-          <Card job={job} key={job.id} />
-        ))}
-      </ul>
+    <div className="flex flex-row justify-between  w-full">
+      {/* job info */}
+      <div className="w-1/3 bg-blue-300">
+        {loading ? (
+          <h1 className="ml-10 mt-5">
+            Job Listings
+            <Loader color="blue" size="xl" type="dots" />
+          </h1>
+        ) : (
+          <ul>
+            {jobs.map((job) => (
+              <Card job={job} key={job.id} />
+            ))}
+          </ul>
+        )}
+      </div>
+      {/* job description */}
+      <div className="bg-red-400 w-2/3">{loading && <JobCard />}</div>
     </div>
   );
 };

@@ -64,8 +64,8 @@ const NavBar = () => {
   ));
 
   return (
-    <div className={classes.header}>
-      <Container className={classes.mainSection} size="md">
+    <div className={`classes.header  `}>
+      <Container className={`classes.mainSection `} size="md">
         <Group justify="space-between">
           <h1>JobShop</h1>
           <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />

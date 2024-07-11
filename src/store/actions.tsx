@@ -19,8 +19,9 @@ export interface FetchDataFailureAction {
   payload: string;
 }
 // Action Creators
-export const fetchDataRequest = () => ({
+export const fetchDataRequest = (data: Job) => ({
   type: FETCH_DATA_REQUEST,
+  payload: data,
 });
 
 export const fetchDataSuccess = (data: Job) => ({

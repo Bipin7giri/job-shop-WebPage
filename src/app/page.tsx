@@ -8,7 +8,6 @@ export default function LandingPage() {
   return (
     <>
       <NavBar />
-      <JobCard />
       <Container />
     </>
   );

@@ -19,6 +19,10 @@ const JobCard: React.FC = () => {
     console.log("Jobs State:", data); // Log the jobs state
   }, [data]);
   // const job = data.map((job: any) => <Card job={job}key={job.id}/>);
-  return <></>;
+  return (
+    <>
+      <h1>Description</h1>
+    </>
+  );
 };
 export default JobCard;
