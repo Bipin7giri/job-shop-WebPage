@@ -30,16 +30,16 @@ const Container: React.FC = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="flex flex-row justify-between  w-full">
+    <div className="flex flex-row justify-between  w-full ">
       {/* job info */}
-      <div className="w-1/3 bg-blue-300">
+      <div className="w-1/3 bg-slate-100 overflow-y-auto">
         {loading ? (
           <h1 className="ml-10 mt-5">
             Job Listings
             <Loader color="blue" size="xl" type="dots" />
           </h1>
         ) : (
-          <ul>
+          <ul className="w-full  overflow-y-auto">
             {jobs.map((job) => (
               <Card job={job} key={job.id} />
             ))}

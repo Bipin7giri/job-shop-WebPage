@@ -1,53 +1,54 @@
 import { useState } from "react";
-import { BsDot } from "react-icons/bs";
-import { AiOutlineArrowRight } from "react-icons/ai";
-import { Job } from "@/store/types";
 
-interface CardProps {
+import { Job } from "@/store/types";
+import { MdOutlineInfo } from "react-icons/md";
+
+interface typeJob {
   job: Job; // Define props as type Job
 }
-const Card: React.FC<CardProps> = ({ job }) => {
+const Card: React.FC<typeJob> = ({ job }) => {
   const [posted, setPosted] = useState(true);
+
+  //time calculation on days
+  const timeAgo = (timestamp: string): string => {
+    const now = new Date();
+    const date = new Date(timestamp);
+    const diffTime = now.getTime() - date.getTime();
+
+    // Calculate the difference in days
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+    if (diffDays === 0) {
+      return "today";
+    } else if (diffDays === 1) {
+      return "one day ago";
+    } else {
+      return `${diffDays} days ago`;
+    }
+  };
+  const timestamp = job.createdAt;
+  //console.log(timeAgo(timestamp));
+
   return (
-    <div className="w-full cursor-pointer   bg-slate-50 transition-all duration-1000  md:w-5/12 m-4 border hover:shadow-xl rounded px-8 md:flex md:flex-wrap">
-      <div className="mb-4 flex  items-center justify-center py-2 ">
-        <div className=" mx-2 px-2">
-          <h1 className="text-xl md:text-2xl font-semibold">
-            {job.position.en}
-          </h1>
-          <p className="text-xs sm:text-sm md:text-base text-gray-500">
-            {job.companyName.en}
-          </p>
+    <div className="bg-white mx-2 my-5 rounded-md p-5 shadow-md hover:shadow-xl border-l-2 border-r-2 border-red-500">
+      <div className=" flex flex-row justify-between">
+        <div className="">
+          <h1 className="mb-3 font-medium text-red-500">FULL TIME</h1>
+        </div>
+        <div className=" ">
+          <MdOutlineInfo size={29} color="black" />
         </div>
       </div>
-      <div className="mb-4 flex   items-start justify-center py-2 flex-col">
-        <div className="flex  px-2 py-2 items-center justify-center ">
-          <BsDot className="text-4xl font-extrabold text-indigo-600" />
-          <h1 className="text-lg text-gray-900">Experience :</h1>
-          <p className="text-base  font-semibold">{job.experience.en}</p>
-        </div>
-        <div className="flex px-2 py-2 items-center  justify-center">
-          <BsDot className="text-4xl font-extrabold text-indigo-600" />
-          <h1 className="text-lg text-gray-900">Vacancy :</h1>
-          <p className="text-base  font-semibold">{job.numberOfVacancies}</p>
-        </div>
-      </div>
-      <div className="mb-4 flex flex-col md:flex-wrap md:flex-row w-full justify-between  items-center ">
-        <div className="mb-4 flex  items-start justify-center py-2 flex-col">
-          <div className="flex px-6 rounded-2xl py-1 items-center justify-center bg-indigo-200 text-indigo-900  ">
-            <p>{job.location.en}</p>
-          </div>
-        </div>
-        {posted ? (
-          <button className="my-2 py-2 px-4  border border-indigo-600   rounded flex items-center justify-center transition-all duration-700 hover:bg-indigo-600 hover:text-white text-indigo-600 font-semibold">
-            View Applications <AiOutlineArrowRight className="mx-2 text-xl" />
-          </button>
-        ) : (
-          <button className="my-2 py-2 px-4  border border-indigo-600   rounded flex items-center justify-center transition-all duration-700 hover:bg-indigo-600 hover:text-white text-indigo-600 font-semibold">
-            View Detail <AiOutlineArrowRight className="mx-2 text-xl" />
-          </button>
-        )}
-      </div>
+      <ul className="flex flex-row  justify-between">
+        <li className=" font-bold mb-2">{job.position.en}</li>
+      </ul>
+      <ul className="flex flex-row justify-between font-extralight text-sm ">
+        <li className=" ">{job.location.en}</li>
+
+        <li>Experience: {job.experience.en}</li>
+        <li>{job.salaryType.en}</li>
+        <li>{timeAgo(timestamp)}</li>
+      </ul>
     </div>
   );
 };
