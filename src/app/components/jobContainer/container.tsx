@@ -1,33 +1,30 @@
-import React, { useEffect, useState } from "react";
-import api from "@/app/api";
+import React, { useState } from "react";
 
 import { Job } from "@/store/types";
 import Card from "./Card";
 import { Loader } from "@mantine/core";
-import { SimpleGrid } from "@mantine/core";
+
 import JobCard from "./jobCard";
-const Container: React.FC = () => {
-  const [jobs, setJobs] = useState<Job[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await api.get("/");
-        setJobs(response.data.data);
-      } catch (err: any) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+interface selectedJobProp {
+  jobs: Job[];
+  onHandleSelectedJob: (job: Job) => void;
+  loading: boolean;
+}
 
-    fetchData();
-  }, []);
-  //console.log(jobs);
+const Container: React.FC<selectedJobProp> = ({
+  jobs,
+  onHandleSelectedJob,
+  loading,
+}) => {
+  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 
-  if (error) return <p>Error: {error}</p>;
+  const handleCardClick = (job: Job) => {
+    if (selectedJob?.id !== job.id) {
+      setSelectedJob(job);
+      onHandleSelectedJob(job);
+    }
+  };
 
   return (
     <div className="flex flex-row justify-between  w-full ">
@@ -41,13 +38,20 @@ const Container: React.FC = () => {
         ) : (
           <ul className="w-full  overflow-y-auto">
             {jobs.map((job) => (
-              <Card job={job} key={job.id} />
+              <Card
+                job={job}
+                key={job.id}
+                onHandleCardClick={handleCardClick}
+                isSelected={selectedJob?.id === job.id}
+              />
             ))}
           </ul>
         )}
       </div>
       {/* job description */}
-      <div className="bg-red-400 w-2/3">{loading && <JobCard />}</div>
+      <div className=" w-2/3 bg-slate-100">
+        {!loading && <JobCard selectedJob={selectedJob} />}
+      </div>
     </div>
   );
 };
