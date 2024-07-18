@@ -1,6 +1,6 @@
 import { MdOutlineInfo } from "react-icons/md";
+import { IoLocationSharp } from "react-icons/io5";
 import { Job } from "@/store/types";
-
 interface typeJob {
   job: Job;
   onHandleCardClick: (job: Job) => void;
@@ -29,7 +29,9 @@ const Card: React.FC<typeJob> = ({ job, isSelected, onHandleCardClick }) => {
   return (
     <div
       className={`mx-2 my-5 rounded-md p-5 shadow-md hover:shadow-xl border-l-2 border-r-2 ${
-        isSelected ? "bg-blue-500 border-blue-500" : "bg-white border-red-500"
+        isSelected
+          ? " bg-slate-100 border-blue-500"
+          : " bg-white border-red-500"
       }`}
       onClick={() => {
         onHandleCardClick(job);
@@ -38,31 +40,38 @@ const Card: React.FC<typeJob> = ({ job, isSelected, onHandleCardClick }) => {
       <div className="flex flex-row justify-between">
         <div>
           <h1
-            className={`mb-3 font-medium ${
-              isSelected ? "text-white" : "text-red-500"
-            }`}
+            className=' font-medium 
+               "text-black-500"
+            '
           >
-            FULL TIME
+            {job.position.en}
           </h1>
         </div>
         <div>
-          <MdOutlineInfo size={29} color={isSelected ? "white" : "black"} />
+          <MdOutlineInfo size={29} color={"black"} />
         </div>
       </div>
-      <ul className="flex flex-row justify-between">
-        <li className={`font-bold mb-2 ${isSelected ? "text-white" : ""}`}>
-          {job.position.en}
+      <ul className="flex flex-col justify-between">
+        <li
+          className="  
+          text-black font-extralight
+          "
+        >
+          {job.companyName.en}
+        </li>
+        <li className="flex flex-row pt-3">
+          {" "}
+          <p className="pt-1 mr-2">
+            <IoLocationSharp />
+          </p>
+          {job.location.en}
         </li>
       </ul>
-      <ul
-        className={`flex flex-row justify-between font-extralight text-sm ${
-          isSelected ? "text-white" : ""
-        }`}
-      >
-        <li>{job.location.en}</li>
-        <li>Experience: {job.experience.en}</li>
-        <li>{job.salaryType.en}</li>
+      <p className=" border mt-2"></p>
+      <ul className="pt-5 flex flex-row justify-between font-extralight text-sm text-black">
+        <li>Full time</li>
         <li>{timeAgo(timestamp)}</li>
+        <li>{job.salary} Euro/Month</li>
       </ul>
     </div>
   );
