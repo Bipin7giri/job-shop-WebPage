@@ -1,112 +1,135 @@
 "use client";
-import Link from "next/link";
-import React, { useEffect } from "react";
-import { SegmentedControl } from "@mantine/core";
-const SignUpPage: React.FC = () => {
-  const [section, setSection] = React.useState<"Employer" | "Employee">(
-    "Employer"
-  );
-  const [modal, setModal] = React.useState(false);
-  const onModalOpen = () => {
-    setModal(true);
-  };
-  const onModalClose = () => {
-    setModal(false);
-  };
+import { useState } from "react";
+import {
+  Stepper,
+  Button,
+  Group,
+  TextInput,
+  PasswordInput,
+  Code,
+} from "@mantine/core";
+import { useForm } from "@mantine/form";
 
-  const [user, setUser] = React.useState({
-    username: "",
-    email: "",
-    password: "",
+const SignUpPage = () => {
+  const [active, setActive] = useState(0);
+
+  const form = useForm({
+    mode: "uncontrolled",
+    initialValues: {
+      username: "",
+      password: "",
+      name: "",
+      email: "",
+      website: "",
+      github: "",
+    },
+
+    validate: (values) => {
+      if (active === 0) {
+        return {
+          username:
+            values.username.trim().length < 6
+              ? "Username must include at least 6 characters"
+              : null,
+          password:
+            values.password.length < 6
+              ? "Password must include at least 6 characters"
+              : null,
+        };
+      }
+
+      if (active === 1) {
+        return {
+          name:
+            values.name.trim().length < 2
+              ? "Name must include at least 2 characters"
+              : null,
+          email: /^\S+@\S+$/.test(values.email) ? null : "Invalid email",
+        };
+      }
+
+      return {};
+    },
   });
 
-  const [buttonDisabled, setButtonDisabled] = React.useState(false);
+  const nextStep = () =>
+    setActive((current) => {
+      if (form.validate().hasErrors) {
+        return current;
+      }
+      return current < 3 ? current + 1 : current;
+    });
 
-  useEffect(() => {
-    if (
-      user.username.length > 0 &&
-      user.email.length > 0 &&
-      user.password.length > 0
-      //  if the password,email and username doesnot matches
-    ) {
-      setButtonDisabled(false);
-    } else {
-      setButtonDisabled(true);
-    }
-  }, [user]);
+  const prevStep = () =>
+    setActive((current) => (current > 0 ? current - 1 : current));
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <nav className="">
-        <div>
-          <SegmentedControl
-            value={section}
-            onChange={(value: any) => setSection(value)}
-            transitionTimingFunction="ease"
-            fullWidth
-            data={[
-              { label: "Employer", value: "Employer" },
-              { label: "Employee", value: "Employee" },
-            ]}
+    <>
+      <Stepper active={active}>
+        <Stepper.Step label="First step" description="Profile settings">
+          <TextInput
+            label="Username"
+            placeholder="Username"
+            key={form.key("username")}
+            {...form.getInputProps("username")}
           />
-        </div>
-      </nav>
-      <h1 className="py-6 mb-10 text-5xl">Free Sign Up</h1>
+          <PasswordInput
+            mt="md"
+            label="Password"
+            placeholder="Password"
+            key={form.key("password")}
+            {...form.getInputProps("password")}
+          />
+        </Stepper.Step>
 
-      <input
-        className="w-[350px] text-slate-800 p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
-        id="username"
-        type="text"
-        value={user.username}
-        onChange={(e) => setUser({ ...user, username: e.target.value })}
-        placeholder="Username"
-      />
+        <Stepper.Step label="Second step" description="Personal information">
+          <TextInput
+            label="Name"
+            placeholder="Name"
+            key={form.key("name")}
+            {...form.getInputProps("name")}
+          />
+          <TextInput
+            mt="md"
+            label="Email"
+            placeholder="Email"
+            key={form.key("email")}
+            {...form.getInputProps("email")}
+          />
+        </Stepper.Step>
 
-      <input
-        className="w-[350px] text-slate-800 p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
-        id="email"
-        type="text"
-        value={user.email}
-        onChange={(e) => setUser({ ...user, email: e.target.value })}
-        placeholder="Your Email/Phone Number"
-      />
+        <Stepper.Step label="Final step" description="Social media">
+          <TextInput
+            label="Website"
+            placeholder="Website"
+            key={form.key("website")}
+            {...form.getInputProps("website")}
+          />
+          <TextInput
+            mt="md"
+            label="GitHub"
+            placeholder="GitHub"
+            key={form.key("github")}
+            {...form.getInputProps("github")}
+          />
+        </Stepper.Step>
+        <Stepper.Completed>
+          Completed! Form values:
+          <Code block mt="xl">
+            {JSON.stringify(form.getValues(), null, 2)}
+          </Code>
+        </Stepper.Completed>
+      </Stepper>
 
-      <input
-        className="w-[350px] text-slate-800 p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
-        id="password"
-        type="password"
-        value={user.password}
-        onChange={(e) => setUser({ ...user, password: e.target.value })}
-        placeholder="Password"
-      />
-      <input
-        className="w-[350px] text-slate-800 p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
-        id="password"
-        type="password"
-        value={user.password}
-        onChange={(e) => setUser({ ...user, password: e.target.value })}
-        placeholder="Confirm Password"
-      />
-
-      <button className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-600 uppercase px-40 py-3 mt-5 font-bold">
-        {buttonDisabled ? "Sign Up" : "Register My Account Now"}
-      </button>
-
-      <p onClick={onModalOpen} className="mt-5">
-        Do you have a free account already?{" "}
-        <span className="font-bold text-green-600 ml-2 cursor-pointer underline">
-          <Link href="/login">
-            <p>Login</p>
-          </Link>
-        </span>
-      </p>
-
-      <Link href="/">
-        <h3 className="mt-8 opacity-50">
-          <p className="inline mr-1"> Back to the Homepage</p>
-        </h3>
-      </Link>
-    </div>
+      <Group justify="flex-end" mt="xl">
+        {active !== 0 && (
+          <Button variant="default" onClick={prevStep}>
+            Back
+          </Button>
+        )}
+        {active !== 3 && <Button onClick={nextStep}>Next step</Button>}
+      </Group>
+    </>
   );
 };
 export default SignUpPage;

@@ -102,7 +102,7 @@ const NavBar = () => {
               </UnstyledButton>
             </Menu.Target>
             <Menu.Dropdown>
-              {/*<Link href="/components/SignUp" passHref>
+              <Link href="/components/SignUp" passHref>
                 <Menu.Item
                   component="a"
                   leftSection={
@@ -127,9 +127,9 @@ const NavBar = () => {
                     />
                   }
                 >
-                  Login
+                  Log In
                 </Menu.Item>
-              </Link>*/}
+              </Link>
               <Menu.Item
                 leftSection={
                   <IconMessage
