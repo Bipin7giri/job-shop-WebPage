@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Job } from "@/store/types";
 import Card from "./Card";
 import { Loader } from "@mantine/core";
-
+import { ScrollArea } from "@mantine/core";
 import JobCard from "./jobCard";
 
 interface selectedJobProp {
@@ -29,14 +29,15 @@ const Container: React.FC<selectedJobProp> = ({
   return (
     <div className="flex flex-row justify-between  w-full ">
       {/* job info */}
-      <div className="w-1/3 bg-slate-100 overflow-y-auto">
+
+      <div className="w-1/3 bg-slate-100 ">
         {loading ? (
           <h1 className="ml-10 mt-5">
             Job Listings
             <Loader color="blue" size="xl" type="dots" />
           </h1>
         ) : (
-          <ul className="w-full  overflow-y-auto">
+          <ul className="w-full  ">
             {jobs.map((job) => (
               <Card
                 job={job}
@@ -48,6 +49,7 @@ const Container: React.FC<selectedJobProp> = ({
           </ul>
         )}
       </div>
+
       {/* job description */}
       <div className=" w-2/3 bg-slate-100">
         {!loading && <JobCard selectedJob={selectedJob} />}
