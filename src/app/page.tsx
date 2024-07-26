@@ -14,7 +14,7 @@ export default function LandingPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get("/");
+        const response = await api.get("/jobs");
         setJobs(response.data.data);
       } catch (err: any) {
         setError(err.message);
@@ -25,7 +25,6 @@ export default function LandingPage() {
 
     fetchData();
   }, []);
-  //console.log(jobs);
 
   const handleSelectedJob = (job: Job): void => {
     setSelectedJob(job);
