@@ -5,6 +5,7 @@ import { Job } from "@/store/types";
 import NavBar from "./components/NavBar/navBar";
 import { useState, useEffect } from "react";
 import api from "./api";
+
 export default function LandingPage() {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -36,6 +37,7 @@ export default function LandingPage() {
   return (
     <>
       <NavBar />
+
       <Container
         jobs={jobs}
         onHandleSelectedJob={handleSelectedJob}

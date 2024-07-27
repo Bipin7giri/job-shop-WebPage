@@ -1,4 +1,4 @@
-"use client";
+"use Client";
 import Link from "next/link";
 import React, { useEffect } from "react";
 const JobSeekerSignUpPage: React.FC = () => {

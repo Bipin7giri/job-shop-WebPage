@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import { Job } from "@/store/types";
 import Card from "./Card";
 import { Loader } from "@mantine/core";
-import { ScrollArea } from "@mantine/core";
+
 import JobCard from "./jobCard";
+import Pagination from "./Pagination";
 
 interface selectedJobProp {
   jobs: Job[];
@@ -26,6 +27,24 @@ const Container: React.FC<selectedJobProp> = ({
     }
   };
 
+  // Pagination logic
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const jobsPerPage = 4;
+  const indexOfLastJob = currentPage * jobsPerPage;
+  const indexOfFirstJob = indexOfLastJob - jobsPerPage;
+  const currentJobs = jobs.slice(indexOfFirstJob, indexOfLastJob);
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  const cardItems = currentJobs.map((job) => (
+    <Card
+      job={job}
+      key={job.id}
+      onHandleCardClick={handleCardClick}
+      isSelected={selectedJob?.id === job.id}
+    />
+  ));
   return (
     <div className="flex flex-row justify-between  w-full ">
       {/* job info */}
@@ -37,17 +56,14 @@ const Container: React.FC<selectedJobProp> = ({
             <Loader color="blue" size="xl" type="dots" />
           </h1>
         ) : (
-          <ul className="w-full  ">
-            {jobs.map((job) => (
-              <Card
-                job={job}
-                key={job.id}
-                onHandleCardClick={handleCardClick}
-                isSelected={selectedJob?.id === job.id}
-              />
-            ))}
-          </ul>
+          <ul className="w-full  ">{cardItems}</ul>
         )}
+        <Pagination
+          jobsPerPage={jobsPerPage}
+          totalJobs={jobs.length}
+          paginate={paginate}
+          currentPage={currentPage}
+        />
       </div>
 
       {/* job description */}
@@ -59,3 +75,6 @@ const Container: React.FC<selectedJobProp> = ({
 };
 
 export default Container;
+function Jobs(arg0: { id: number }[], arg1: number) {
+  throw new Error("Function not implemented.");
+}
