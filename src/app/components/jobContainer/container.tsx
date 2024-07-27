@@ -75,6 +75,3 @@ const Container: React.FC<selectedJobProp> = ({
 };
 
 export default Container;
-function Jobs(arg0: { id: number }[], arg1: number) {
-  throw new Error("Function not implemented.");
-}
