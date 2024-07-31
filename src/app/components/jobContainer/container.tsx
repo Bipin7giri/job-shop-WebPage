@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Job } from "@/store/types";
 import Card from "./Card";
@@ -6,37 +6,39 @@ import { Loader } from "@mantine/core";
 
 import JobCard from "./jobCard";
 import Pagination from "./Pagination";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/store/store";
+import { fetchData } from "@/app/job/redux/jobReducer";
 
-interface selectedJobProp {
-  jobs: Job[];
-  onHandleSelectedJob: (job: Job) => void;
-  loading: boolean;
-}
-
-const Container: React.FC<selectedJobProp> = ({
-  jobs,
-  onHandleSelectedJob,
-  loading,
-}) => {
+const Container: React.FC = () => {
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+
+  const dispatch: AppDispatch = useDispatch();
+  const data = useSelector((state: RootState) => state.job.data);
+  const loading = useSelector((state: RootState) => state.job.loading);
+  const error = useSelector((state: RootState) => state.job.error);
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
 
   const handleCardClick = (job: Job) => {
     if (selectedJob?.id !== job.id) {
       setSelectedJob(job);
-      onHandleSelectedJob(job);
     }
   };
 
   // Pagination logic
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [currentPage, setCurrentPage] = useState(1);
   const jobsPerPage = 4;
   const indexOfLastJob = currentPage * jobsPerPage;
   const indexOfFirstJob = indexOfLastJob - jobsPerPage;
-  const currentJobs = jobs.slice(indexOfFirstJob, indexOfLastJob);
+  const currentJobs = data.slice(indexOfFirstJob, indexOfLastJob);
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
+  if (error) return <p>Error: {error}</p>;
   const cardItems = currentJobs.map((job) => (
     <Card
       job={job}
@@ -60,7 +62,7 @@ const Container: React.FC<selectedJobProp> = ({
         )}
         <Pagination
           jobsPerPage={jobsPerPage}
-          totalJobs={jobs.length}
+          totalJobs={data.length}
           paginate={paginate}
           currentPage={currentPage}
         />

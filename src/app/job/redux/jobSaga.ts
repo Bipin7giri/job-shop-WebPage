@@ -6,8 +6,11 @@ import { AxiosResponse } from "axios";
 import { Job } from "@/store/types";
 function* fetchDataSaga(): Generator<any, void, any> {
   try {
-    const response: AxiosResponse<{ data: Job[] }> = yield call(api.get, "/");
-    console.log("API Response:", response.data);
+    const response: AxiosResponse<{ data: Job[] }> = yield call(
+      api.get,
+      "/jobs"
+    );
+
     yield put(fetchDataSuccess(response.data.data));
   } catch (error: any) {
     console.error("API Error:", error);

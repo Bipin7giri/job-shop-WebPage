@@ -10,19 +10,6 @@ interface selectedJobProps {
   selectedJob: Job | null;
 }
 const JobCard: React.FC<selectedJobProps> = ({ selectedJob }) => {
-  const dispatch: AppDispatch = useDispatch();
-  const data = useSelector((state: RootState) => state.job.data);
-  const loading = useSelector((state: RootState) => state.job.loading);
-  const error = useSelector((state: RootState) => state.job.error);
-
-  useEffect(() => {
-    dispatch(fetchData());
-  }, [dispatch]);
-
-  useEffect(() => {
-    //console.log("Jobs State:", data);
-  }, [data]);
-
   if (!selectedJob) {
     return <div className="p-4">Select a job to see the details</div>;
   }
@@ -52,18 +39,18 @@ const JobCard: React.FC<selectedJobProps> = ({ selectedJob }) => {
             <li>sdfgs</li>
           </div>
           <div className="flex flex-col  bg-white  p-6 mt-5 ">
-            <p className="flex flex-row">
+            <div className="flex flex-row">
               <h1 className=" font-bold ">Number of Vacancy</h1>:{" "}
               {selectedJob.numberOfVacancies}
-            </p>
-            <p className="flex flex-row">
+            </div>
+            <div className="flex flex-row">
               <h1 className=" font-bold ">Experience</h1>:{" "}
               {selectedJob.experience.en}
-            </p>
-            <p className="flex flex-row">
+            </div>
+            <div className="flex flex-row">
               <h1 className=" font-bold "> Language</h1>:{" "}
               {selectedJob.language.en}
-            </p>
+            </div>
           </div>
           <div className="flex flex-row  justify-between bg-white  p-6 mt-5 ">
             <div className=" font-light">
@@ -79,18 +66,18 @@ const JobCard: React.FC<selectedJobProps> = ({ selectedJob }) => {
         <Tabs.Panel value="Company">
           <div className="flex flex-row  bg-white  p-6 mt-5 justify-between ">
             <div>
-              <p className="flex flex-row pb-3">
+              <div className="flex flex-row pb-3">
                 <h1 className=" font-bold "> Company Name</h1>:{" "}
                 {selectedJob.companyName.en}
-              </p>
-              <p className="flex flex-row pb-3">
+              </div>
+              <div className="flex flex-row pb-3">
                 <h1 className=" font-bold "> Phone Number</h1>:{" "}
                 {selectedJob.phoneNumber.en}
-              </p>
-              <p className="flex flex-row pb-3">
+              </div>
+              <div className="flex flex-row pb-3">
                 <h1 className=" font-bold "> Location</h1>:{" "}
                 {selectedJob.location.en}
-              </p>
+              </div>
             </div>
           </div>
         </Tabs.Panel>
