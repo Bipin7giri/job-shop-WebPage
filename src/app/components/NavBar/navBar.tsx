@@ -1,7 +1,8 @@
 import cx from "clsx";
 import { useState } from "react";
 import Link from "next/link";
-
+import Image from "next/image";
+import { CiSearch } from "react-icons/ci";
 import {
   Container,
   Avatar,
@@ -13,6 +14,8 @@ import {
   Burger,
   rem,
   useMantineTheme,
+  MultiSelect,
+  Autocomplete,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import {
@@ -62,14 +65,33 @@ const NavBar = () => {
       {tab}
     </Tabs.Tab>
   ));
-
+  const icon = <CiSearch style={{ width: rem(16), height: rem(16) }} />;
   return (
     <div className={`classes.header  `}>
       <Container className={`classes.mainSection `} size="md">
         <Group justify="space-between">
-          <h1>JobShop</h1>
+          {/* left section */}
+          <Image src="/jobshop.jpg" width={100} height={80} alt="Job shop" />
           <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
-
+          <Autocomplete
+            aria-label="Search"
+            size="lg"
+            radius="xl"
+            leftSection={icon}
+            withScrollArea={true}
+            width={500}
+            placeholder="Search your job here..."
+            data={[
+              { group: "Full-Time", items: ["Waiter", "Chef"] },
+              { group: "Part-Time", items: ["Kitchen Helper", "Dishwasher"] },
+            ]}
+            comboboxProps={{
+              width: 250,
+              position: "bottom-start",
+              transitionProps: { transition: "pop", duration: 200 },
+              shadow: "md",
+            }}
+          />
           <Menu
             width={260}
             position="bottom-end"
