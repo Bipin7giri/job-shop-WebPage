@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { useDisclosure } from "@mantine/hooks";
 import { Job } from "@/store/types";
 import Card from "./Card";
 import { Loader } from "@mantine/core";
@@ -9,8 +9,8 @@ import Pagination from "./Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
 import { fetchData } from "@/app/job/redux/jobReducer";
-
 const Container: React.FC = () => {
+  const [opened, { open, close }] = useDisclosure(false);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 
   const dispatch: AppDispatch = useDispatch();
@@ -31,7 +31,7 @@ const Container: React.FC = () => {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [currentPage, setCurrentPage] = useState(1);
-  const jobsPerPage = 4;
+  const jobsPerPage = 8;
   const indexOfLastJob = currentPage * jobsPerPage;
   const indexOfFirstJob = indexOfLastJob - jobsPerPage;
   const currentJobs = data.slice(indexOfFirstJob, indexOfLastJob);
@@ -41,6 +41,7 @@ const Container: React.FC = () => {
   if (error) return <p>Error: {error}</p>;
   const cardItems = currentJobs.map((job) => (
     <Card
+      onClickModal={open}
       job={job}
       key={job.id}
       onHandleCardClick={handleCardClick}
@@ -48,29 +49,30 @@ const Container: React.FC = () => {
     />
   ));
   return (
-    <div className="flex flex-row justify-between  w-full ">
+    <div className=" max-w-full flex flex-col justify-center ml-5 mr-5">
       {/* job info */}
+      <div className=" bg-slate-100  ">
+        <ul className="  bg-slate-100  grid-cols-4 grid  align-middle">
+          {cardItems}
 
-      <div className="w-1/3 bg-slate-100 ">
-        {loading ? (
-          <h1 className="ml-10 mt-5">
-            Job Listings
-            <Loader color="blue" size="xl" type="dots" />
-          </h1>
-        ) : (
-          <ul className="w-full  ">{cardItems}</ul>
-        )}
-        <Pagination
-          jobsPerPage={jobsPerPage}
-          totalJobs={data.length}
-          paginate={paginate}
-          currentPage={currentPage}
-        />
+          <Pagination
+            jobsPerPage={jobsPerPage}
+            totalJobs={data.length}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
+        </ul>
       </div>
 
-      {/* job description */}
-      <div className=" w-2/3 bg-slate-100">
-        {!loading && <JobCard selectedJob={selectedJob} />}
+      {/* job details */}
+      <div className=" bg-slate-100 ">
+        {!loading && (
+          <JobCard
+            selectedJob={selectedJob}
+            opened={opened}
+            onCloseModal={close}
+          />
+        )}
       </div>
     </div>
   );

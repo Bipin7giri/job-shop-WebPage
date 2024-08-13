@@ -5,9 +5,15 @@ interface typeJob {
   job: Job;
   onHandleCardClick: (job: Job) => void;
   isSelected: boolean;
+  onClickModal: (open: any) => void;
 }
 
-const Card: React.FC<typeJob> = ({ job, isSelected, onHandleCardClick }) => {
+const Card: React.FC<typeJob> = ({
+  job,
+  isSelected,
+  onHandleCardClick,
+  onClickModal,
+}) => {
   //convert the backend date to todays date
   const timeAgo = (timestamp: string): string => {
     const now = new Date();
@@ -35,6 +41,7 @@ const Card: React.FC<typeJob> = ({ job, isSelected, onHandleCardClick }) => {
       }`}
       onClick={() => {
         onHandleCardClick(job);
+        onClickModal(open);
       }}
     >
       <div className="flex flex-row justify-between">
