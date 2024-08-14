@@ -34,49 +34,50 @@ const Card: React.FC<typeJob> = ({
 
   return (
     <div
-      className={`mx-2 my-5 rounded-md p-5 shadow-md hover:shadow-xl border-l-2 border-r-2 ${
-        isSelected
-          ? " bg-slate-100 border-blue-500"
-          : " bg-white border-red-500"
-      }`}
+      className={`mx-2 cursor-pointer my-1 rounded-md p-3 shadow-md hover:shadow-xl border-l-2 border-r-2 
+        
+           
+            ${isSelected ? " bg-slate-100 border-blue-500" : " bg-white "}`}
       onClick={() => {
         onHandleCardClick(job);
         onClickModal(open);
       }}
     >
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row   truncate ">
         <div>
           <h1
-            className=' font-medium 
-               "text-black-500"
-            '
+            className=" font-medium 
+               text-black-500 
+            "
           >
             {job.position.en}
           </h1>
         </div>
-        <div>
+        {/* <div>
           <MdOutlineInfo size={29} color={"black"} />
-        </div>
+        </div> */}
       </div>
       <ul className="flex flex-col justify-between">
-        <li
+        {/* <li
           className="  
           text-black font-extralight
           "
         >
           {job.companyName.en}
-        </li>
-        <li className="flex flex-row pt-3">
+        </li> */}
+        <li className="flex flex-row  justify-between">
           {" "}
-          <p className="pt-1 mr-2">
-            <IoLocationSharp />
-          </p>
-          {job.location.en}
+          <div className="flex flex-row">
+            <p className="pt-1">
+              <IoLocationSharp />
+            </p>
+            {job.location.en}
+          </div>
+          <li>Full time</li>
         </li>
       </ul>
-      <p className=" border mt-2"></p>
-      <ul className="pt-5 flex flex-row justify-between font-extralight text-sm text-black">
-        <li>Full time</li>
+      <p className=" border "></p>
+      <ul className="pt-1 flex flex-row justify-between font-extralight text-sm text-black">
         <li>{timeAgo(timestamp)}</li>
         <li>{job.salary} Euro/Month</li>
       </ul>

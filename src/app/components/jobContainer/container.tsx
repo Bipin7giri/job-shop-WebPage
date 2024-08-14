@@ -31,7 +31,7 @@ const Container: React.FC = () => {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [currentPage, setCurrentPage] = useState(1);
-  const jobsPerPage = 8;
+  const jobsPerPage = 16;
   const indexOfLastJob = currentPage * jobsPerPage;
   const indexOfFirstJob = indexOfLastJob - jobsPerPage;
   const currentJobs = data.slice(indexOfFirstJob, indexOfLastJob);

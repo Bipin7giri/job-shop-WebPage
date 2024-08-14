@@ -64,23 +64,12 @@ const NavBar = () => {
   const icon = <CiSearch style={{ width: rem(16), height: rem(16) }} />;
   return (
     <div
-      className={`classes.header  bg-[url('/job-shop.jpg')] bg-top bg-[length:1270px_600px] h-80 w-auto  `}
+      className={`classes.header  bg-[url('/job-shop.jpg')] bg-center  bg-[length:1270px_450px]  h-[20rem] w-auto  `}
     >
       <Container className={`classes.mainSection `} size="md">
         <Group justify="space-between ">
           {/* left section */}
-          <Image
-            src="/jobshop.png"
-            width={100}
-            height={80}
-            alt="Job shop"
-            className=" animate-text
-            bg-gradient-to-r
-            from-teal-500
-            via-purple-500
-            to-orange-500
-            bg-clip-text"
-          />
+          <Image src="/jobshop.png" width={100} height={80} alt="Job shop" />
           <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
           {/* <Autocomplete
             aria-label="Search"
@@ -102,20 +91,7 @@ const NavBar = () => {
             }}
           /> */}
           {/* right section */}
-          <h1
-            className="
-            animate-text
-            bg-gradient-to-r
-            from-teal-500
-            via-purple-500
-            to-orange-500
-            bg-clip-text
-            text-transparent
-            text-3xl
-            font-black"
-          >
-            Transform your future with us!
-          </h1>
+
           <div>
             <Menu
               width={260}
@@ -404,7 +380,21 @@ const NavBar = () => {
           <Tabs.List>{items}</Tabs.List>
         </Tabs>
       </Container>
-      <div className="  absolute     left-[30rem]  top-60  z-20 ">
+      <div className="  absolute     left-[20rem]  top-44  z-20 ">
+        <h1
+          className="
+            animate-text
+            bg-gradient-to-r
+            from-teal-500
+            via-purple-500
+            to-orange-500
+            bg-clip-text
+            text-transparent
+            text-5xl
+            font-black  mb-[2.5rem]"
+        >
+          Transform your future with us!
+        </h1>
         <Autocomplete
           aria-label="Search"
           size="lg"

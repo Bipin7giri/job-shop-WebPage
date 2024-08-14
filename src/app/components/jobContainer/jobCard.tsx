@@ -23,7 +23,7 @@ const JobCard: React.FC<selectedJobProps> = ({
     <Modal
       opened={opened}
       onClose={onCloseModal}
-      scrollAreaComponent={ScrollArea.Autosize}
+      // scrollAreaComponent={ScrollArea.Autosize}
     >
       <div className="flex flex-row  w-full justify-between">
         <div className="w-full">
@@ -36,19 +36,19 @@ const JobCard: React.FC<selectedJobProps> = ({
             <Tabs.Panel value="Job details">
               {" "}
               <div className="flex flex-col bg-white  justify-between p-6 ">
-                <div className="flex flex-row">
-                  <h1 className=" font-bold pr-3">Description: </h1>
-                  <p>{selectedJob.description.en}</p>
-                </div>
-                <div className="flex flex-row">
-                  <h1 className=" pr-3 font-bold ">Requirements:</h1>
-                  <ul>{selectedJob.experience.en}</ul>
-                </div>
-                <div className="flex flex-row">
+                <div className="flex flex-col">
                   <h1 className="pr-3 font-bold ">Job Facility:</h1>
                   {selectedJob.facility.en.map((facility) => (
                     <li key={facility}>{facility}</li>
                   ))}
+                </div>
+                <div className="flex flex-row">
+                  <h1 className=" pr-3 font-bold ">Requirements:</h1>
+                  <ul>{selectedJob.workType.en}</ul>
+                </div>
+                <div className="flex flex-row">
+                  <h1 className="pr-3 font-bold "> Language</h1>:{" "}
+                  {selectedJob.language.en}
                 </div>
                 <div className="flex flex-row  justify-start">
                   <h1 className="pr-3 font-bold ">No. of Vacancy:</h1>{" "}
@@ -58,9 +58,11 @@ const JobCard: React.FC<selectedJobProps> = ({
                   <h1 className="pr-3 font-bold ">Experience</h1>:{" "}
                   {selectedJob.experience.en}
                 </div>
-                <div className="flex flex-row">
-                  <h1 className="pr-3 font-bold "> Language</h1>:{" "}
-                  {selectedJob.language.en}
+                <div className="flex flex-col ">
+                  <h1 className=" font-bold pr-3">Description: </h1>
+                  <p className="border border-solid overflow-x-hidden w-[22rem]">
+                    {selectedJob.description.en}
+                  </p>
                 </div>
               </div>
               <div className="flex flex-row  justify-between bg-white pl-6 ">
