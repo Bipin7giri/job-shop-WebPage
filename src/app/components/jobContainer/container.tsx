@@ -49,10 +49,10 @@ const Container: React.FC = () => {
     />
   ));
   return (
-    <div className=" max-w-full flex flex-col justify-center ml-5 mr-5">
+    <div className=" max-w-full flex flex-col justify-center ml-5 mr-5 mt-2  ">
       {/* job info */}
-      <div className=" bg-slate-100  ">
-        <ul className="  bg-slate-100  grid-cols-4 grid  align-middle">
+      <div className="    ">
+        <ul className="  bg-slate-100  grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  grid  align-middle">
           {cardItems}
 
           <Pagination

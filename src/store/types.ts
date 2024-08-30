@@ -1,4 +1,4 @@
-// types.ts
+3; // types.ts
 export interface Job {
   id: string;
   deletedBy: string | null;

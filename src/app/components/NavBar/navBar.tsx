@@ -64,7 +64,7 @@ const NavBar = () => {
   const icon = <CiSearch style={{ width: rem(16), height: rem(16) }} />;
   return (
     <div
-      className={`classes.header  bg-[url('/job-shop.jpg')] bg-center  bg-[length:1270px_450px]  h-[20rem] w-auto  `}
+      className={`classes.header  bg-[url('/job-shop.jpg')] bg-center  bg-[length:1270px_550px]  h-[22rem] w-auto  `}
     >
       <Container className={`classes.mainSection `} size="md">
         <Group justify="space-between ">
@@ -380,7 +380,14 @@ const NavBar = () => {
           <Tabs.List>{items}</Tabs.List>
         </Tabs>
       </Container>
-      <div className="  absolute     left-[20rem]  top-44  z-20 ">
+      <div
+        className="absolute  lg:absolute md:absolute sm:absolute    w-[90%] lg:w-[60%] md:w-[60%] sm:w-[70%]
+        left-0
+        right-0
+        top-40
+      m-auto 
+      z-20  justify-center "
+      >
         <h1
           className="
             animate-text
@@ -390,8 +397,12 @@ const NavBar = () => {
             to-orange-500
             bg-clip-text
             text-transparent
-            text-5xl
-            font-black  mb-[2.5rem]"
+            
+            text-2xl
+            lg:text-5xl
+            md:text-4xl
+            sm:text-3xl
+            font-black  "
         >
           Transform your future with us!
         </h1>
