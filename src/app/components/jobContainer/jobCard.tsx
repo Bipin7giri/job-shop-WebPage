@@ -38,17 +38,17 @@ const JobCard: React.FC<selectedJobProps> = ({
               <div className="flex flex-col bg-white  justify-between p-6 ">
                 <div className="flex flex-col">
                   <h1 className="pr-3 font-bold ">Job Facility:</h1>
-                  {selectedJob.facility.en.map((facility) => (
+                  {selectedJob.facility?.en?.map((facility) => (
                     <li key={facility}>{facility}</li>
                   ))}
                 </div>
                 <div className="flex flex-row">
                   <h1 className=" pr-3 font-bold ">Requirements:</h1>
-                  <ul>{selectedJob.workType.en}</ul>
+                  <ul>{selectedJob.workType?.en}</ul>
                 </div>
                 <div className="flex flex-row">
                   <h1 className="pr-3 font-bold "> Language</h1>:{" "}
-                  {selectedJob.language.en}
+                  {selectedJob.language?.en}
                 </div>
                 <div className="flex flex-row  justify-start">
                   <h1 className="pr-3 font-bold ">No. of Vacancy:</h1>{" "}
@@ -56,12 +56,12 @@ const JobCard: React.FC<selectedJobProps> = ({
                 </div>
                 <div className="flex flex-row">
                   <h1 className="pr-3 font-bold ">Experience</h1>:{" "}
-                  {selectedJob.experience.en}
+                  {selectedJob.experience?.en}
                 </div>
                 <div className="flex flex-col ">
                   <h1 className=" font-bold pr-3">Description: </h1>
                   <p className="border border-solid overflow-x-hidden w-[22rem]">
-                    {selectedJob.description.en}
+                    {selectedJob.description?.en}
                   </p>
                 </div>
               </div>
@@ -81,15 +81,15 @@ const JobCard: React.FC<selectedJobProps> = ({
                 <div>
                   <div className="flex flex-row pb-3">
                     <h1 className=" font-bold "> Company Name</h1>:{" "}
-                    {selectedJob.companyName.en}
+                    {selectedJob.companyName?.en}
                   </div>
                   <div className="flex flex-row pb-3">
                     <h1 className=" font-bold "> Phone Number</h1>:{" "}
-                    {selectedJob.phoneNumber.en}
+                    {selectedJob.phoneNumber?.en}
                   </div>
                   <div className="flex flex-row pb-3">
                     <h1 className=" font-bold "> Location</h1>:{" "}
-                    {selectedJob.location.en}
+                    {selectedJob.location?.en}
                   </div>
                 </div>
               </div>

@@ -402,7 +402,8 @@ const NavBar = () => {
             lg:text-5xl
             md:text-4xl
             sm:text-3xl
-            font-black  "
+            font-black
+            mb-1  "
         >
           Transform your future with us!
         </h1>
