@@ -1,4 +1,4 @@
-import ReduxProvider from "@/store/ReduxProvider";
+import ReduxProvider from "@/Store/ReduxProvider";
 import "./globals.css";
 import "@mantine/core/styles.css";
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";

@@ -4,9 +4,9 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { setLocalStorageItem } from "@/app/utils/localStorageUtil";
+import { setLocalStorageItem } from "@/app/Utils/localStorageUtil";
 import api from "@/app/api";
-import { encryptToken } from "@/app/utils/cryptoUtils";
+import { encryptToken } from "@/app/Utils/cryptoUtils";
 //import "react-toastify/dist/ReactToastify.css";
 //import { toast } from "react-toastify";
 
@@ -108,41 +108,40 @@ const EmployerSignUpPage: React.FC = () => {
         )}
         <label>Password</label>
         <div className="relative">
-        <input
-          className="w-[350px] text-slate-800 p-2 border border-gray-300 rounded-lg my-2 focus:outline-none focus:border-gray-600"
-          id="password"
-          type={showPassword ? "text" : "password"}
-          {...register("password", { required: "Password is required" })}
-          placeholder="Password"
-        />
-        <button
-          type="button"
-          className="absolute right-4 top-5"
-          onClick={() => setShowPassword((prev) => !prev)}
-        >
-          {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
-        </button>
+          <input
+            className="w-[350px] text-slate-800 p-2 border border-gray-300 rounded-lg my-2 focus:outline-none focus:border-gray-600"
+            id="password"
+            type={showPassword ? "text" : "password"}
+            {...register("password", { required: "Password is required" })}
+            placeholder="Password"
+          />
+          <button
+            type="button"
+            className="absolute right-4 top-5"
+            onClick={() => setShowPassword((prev) => !prev)}
+          >
+            {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
+          </button>
         </div>
         <label>Confirm Password</label>
         <div className="relative">
-
-        <input
-          className="w-[350px] text-slate-800 p-2 border border-gray-300 rounded-lg my-2 focus:outline-none focus:border-gray-600"
-          id="password"
-          type="password"
-          {...register("confirmPassword", {
-            required: "Confirm Password name is required",
-          })}
-          placeholder="Confirm Password"
+          <input
+            className="w-[350px] text-slate-800 p-2 border border-gray-300 rounded-lg my-2 focus:outline-none focus:border-gray-600"
+            id="password"
+            type="password"
+            {...register("confirmPassword", {
+              required: "Confirm Password name is required",
+            })}
+            placeholder="Confirm Password"
           />
-        <button
-          type="button"
-          className="absolute right-4 top-5"
-          onClick={() => setShowPassword((prev) => !prev)}
+          <button
+            type="button"
+            className="absolute right-4 top-5"
+            onClick={() => setShowPassword((prev) => !prev)}
           >
-          {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
-        </button>
-          </div>
+            {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
+          </button>
+        </div>
         {errors.password && (
           <p className="text-meta-1 py-1">{errors.password.message}</p>
         )}

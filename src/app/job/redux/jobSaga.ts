@@ -3,7 +3,7 @@ import { fetchDataSuccess, fetchDataFailure, fetchData } from "./jobReducer";
 import api from "@/app/api";
 import { AxiosResponse } from "axios";
 
-import { Job } from "@/store/types";
+import { Job } from "@/Store/types";
 function* fetchDataSaga(): Generator<any, void, any> {
   try {
     const response: AxiosResponse<{ data: Job[] }> = yield call(

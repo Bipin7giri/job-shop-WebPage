@@ -1,6 +1,6 @@
 import { MdOutlineInfo } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
-import { Job } from "@/store/types";
+import { Job } from "@/Store/types";
 interface typeJob {
   job: Job;
   onHandleCardClick: (job: Job) => void;

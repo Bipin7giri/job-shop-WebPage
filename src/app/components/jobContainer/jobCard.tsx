@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-undef */
 import React from "react";
-import { Job } from "@/store/types";
+import { Job } from "@/Store/types";
 import { Tabs } from "@mantine/core";
 import Image from "next/image";
 
