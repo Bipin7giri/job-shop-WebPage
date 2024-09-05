@@ -63,10 +63,18 @@ const FooterLinks = () => {
     <footer className={classes.footer}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
-          <Image src="/jobshop.png" width={100} height={100} alt="Job shop" />{" "}
+          {/* <Image src="/jobshop.png" width={50} height={50} alt="Job shop" />{" "} */}
           {/* <MantineLogo size={30} /> */}
           <Text size="s" c="dimmed" className={classes.description}>
-            Join us for all kinds of job vacancies in portugal
+            Since its inception in 2023, Jobshop has been at the forefront{" "}
+            <br /> of connecting job seekers and employers in Portugal. The goal
+            is <br />
+            to provide a comprehensive platform for job seekers to find <br />
+            jobs in Portugal and for employers to find the right fit for their{" "}
+            <br />
+            organization. We pride ourselves on being a reliable bridge <br />
+            between hiring employers and job seekers and have established <br />
+            ourselves as a national leader in recruitment solution.
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>
