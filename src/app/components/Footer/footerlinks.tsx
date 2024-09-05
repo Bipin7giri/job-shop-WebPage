@@ -30,10 +30,9 @@ const data = [
   {
     title: "Community",
     links: [
-      { label: "Join Discord", link: "#" },
-      { label: "Follow on Twitter", link: "#" },
-      { label: "Email newsletter", link: "#" },
-      { label: "GitHub discussions", link: "#" },
+      { label: "Follow on FaceBook", link: "#" },
+      { label: "Whatsapp ", link: "#" },
+      { label: "Email ", link: "#" },
     ],
   },
 ];
@@ -64,9 +63,9 @@ const FooterLinks = () => {
     <footer className={classes.footer}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
-          <Image src="/jobshop.png" width={100} height={80} alt="Job shop" />{" "}
+          <Image src="/jobshop.png" width={100} height={100} alt="Job shop" />{" "}
           {/* <MantineLogo size={30} /> */}
-          <Text size="xs" c="dimmed" className={classes.description}>
+          <Text size="s" c="dimmed" className={classes.description}>
             Join us for all kinds of job vacancies in portugal
           </Text>
         </div>

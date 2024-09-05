@@ -8,8 +8,8 @@ export default function LandingPage() {
   return (
     <>
       <NavBar />
-      <Footer />
       <Container />
+      <Footer />
       <FooterLink />
     </>
   );
