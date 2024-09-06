@@ -50,7 +50,8 @@ const Card: React.FC<typeJob> = ({
                text-black-500 
             "
           >
-            {job.position.en}
+            {job.jobCategory?.name?.en}{" "}
+            {job.position?.en === "waiter" ? "" : job.position?.en}
           </h1>
         </div>
         {/* <div>
@@ -71,7 +72,7 @@ const Card: React.FC<typeJob> = ({
             <p className="pt-1">
               <IoLocationSharp />
             </p>
-            {job.location.en}
+            {job.location?.en}
           </div>
           <li>Full time</li>
         </li>

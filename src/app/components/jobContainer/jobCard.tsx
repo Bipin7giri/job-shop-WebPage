@@ -37,14 +37,19 @@ const JobCard: React.FC<selectedJobProps> = ({
               {" "}
               <div className="flex flex-col bg-white  justify-between p-6 ">
                 <div className="flex flex-col">
+                  <div className="flex flex-row">
+                    <h1 className=" pr-3 font-bold ">Position:</h1>
+                    <ul>
+                      {selectedJob.jobCategory?.name?.en}{" "}
+                      {selectedJob.position?.en === "waiter"
+                        ? ""
+                        : selectedJob.position?.en}
+                    </ul>
+                  </div>
                   <h1 className="pr-3 font-bold ">Job Facility:</h1>
                   {selectedJob.facility?.en?.map((facility) => (
                     <li key={facility}>{facility}</li>
                   ))}
-                </div>
-                <div className="flex flex-row">
-                  <h1 className=" pr-3 font-bold ">Requirements:</h1>
-                  <ul>{selectedJob.workType?.en}</ul>
                 </div>
                 <div className="flex flex-row">
                   <h1 className="pr-3 font-bold "> Language</h1>:{" "}

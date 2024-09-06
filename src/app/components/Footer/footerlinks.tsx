@@ -66,13 +66,13 @@ const FooterLinks = () => {
           {/* <Image src="/jobshop.png" width={50} height={50} alt="Job shop" />{" "} */}
           {/* <MantineLogo size={30} /> */}
           <Text size="s" c="dimmed" className={classes.description}>
-            Since its inception in 2023, Jobshop has been at the forefront of
-            connecting job seekers and employers in Portugal. The goal is to
-            provide a comprehensive platform for job seekers to find jobs in
-            Portugal and for employers to find the right fit for their{" "}
-            organization. We pride ourselves on being a reliable bridge between
-            hiring employers and job seekers and have established ourselves as a
-            national leader in recruitment solution.
+            Founded in 2023, Jobshop has quickly become a leading platform for
+            connecting job seekers and employers in Portugal. Our mission is to
+            provide a comprehensive solution that helps job seekers find the
+            right opportunities while enabling employers to identify the best
+            talent for their organizations. We take pride in serving as a
+            trusted link between candidates and employers, establishing
+            ourselves as a leader in recruitment solutions among immigrants.
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>
