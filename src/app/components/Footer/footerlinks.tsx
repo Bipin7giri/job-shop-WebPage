@@ -66,15 +66,13 @@ const FooterLinks = () => {
           {/* <Image src="/jobshop.png" width={50} height={50} alt="Job shop" />{" "} */}
           {/* <MantineLogo size={30} /> */}
           <Text size="s" c="dimmed" className={classes.description}>
-            Since its inception in 2023, Jobshop has been at the forefront{" "}
-            <br /> of connecting job seekers and employers in Portugal. The goal
-            is <br />
-            to provide a comprehensive platform for job seekers to find <br />
-            jobs in Portugal and for employers to find the right fit for their{" "}
-            <br />
-            organization. We pride ourselves on being a reliable bridge <br />
-            between hiring employers and job seekers and have established <br />
-            ourselves as a national leader in recruitment solution.
+            Since its inception in 2023, Jobshop has been at the forefront of
+            connecting job seekers and employers in Portugal. The goal is to
+            provide a comprehensive platform for job seekers to find jobs in
+            Portugal and for employers to find the right fit for their{" "}
+            organization. We pride ourselves on being a reliable bridge between
+            hiring employers and job seekers and have established ourselves as a
+            national leader in recruitment solution.
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>

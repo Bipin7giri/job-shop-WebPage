@@ -20,7 +20,7 @@ const Pagination: React.FC<PaginationProps> = ({
   }
 
   return (
-    <nav className="flex justify-center mt-4">
+    <nav className="flex justify-center my-4 border border-solid">
       <ul className="inline-flex items-center -space-x-px">
         {pageNumbers.map((number) => (
           <li key={number}>
