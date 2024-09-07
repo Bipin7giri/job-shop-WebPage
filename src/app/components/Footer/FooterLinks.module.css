@@ -20,7 +20,7 @@
 }
 
 .description {
-  width: 30rem;
+  width: 20rem;
   @media (max-width: 767px) {
     text-align: center;
   }

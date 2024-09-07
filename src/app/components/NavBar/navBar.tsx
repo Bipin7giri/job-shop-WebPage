@@ -70,7 +70,7 @@ const NavBar = () => {
         <Group justify="space-between ">
           {/* left section */}
           <Image src="/jobshop.png" width={100} height={80} alt="Job shop" />
-          <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
+          {/* <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" /> */}
           {/* <Autocomplete
             aria-label="Search"
             size="lg"
@@ -124,7 +124,7 @@ const NavBar = () => {
                   </Group>
                 </UnstyledButton>
               </Menu.Target>
-              <Menu.Dropdown>
+              <Menu.Dropdown hiddenFrom="xs">
                 <Link href="/components/SignUp" passHref>
                   <Menu.Item
                     component="a"
@@ -139,7 +139,7 @@ const NavBar = () => {
                     Sign Up
                   </Menu.Item>
 
-                  <Menu.Dropdown>
+                  <Menu.Dropdown hiddenFrom="xs">
                     <Menu.Item>Company</Menu.Item>
                     <Menu.Item>Jobseeker</Menu.Item>
                   </Menu.Dropdown>
@@ -398,7 +398,7 @@ const NavBar = () => {
             bg-clip-text
             text-transparent
             
-            text-2xl
+            text-xl
             lg:text-5xl
             md:text-4xl
             sm:text-3xl
