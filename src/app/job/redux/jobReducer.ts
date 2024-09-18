@@ -1,22 +1,29 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Job } from "@/Store/types";
+interface JobState {
+  data: Job[];
+  loading: boolean;
+  error: string | null;
+}
 
+const initialState: JobState = {
+  data: [],
+  loading: false,
+  error: null,
+};
 export const jobSlice = createSlice({
   name: "job",
-  initialState: {
-    value: null,
-    loading: false,
-    error: null,
-  },
+  initialState,
   reducers: {
     fetchData: (state) => {
       state.loading = true;
       state.error = null;
     },
-    fetchDataSuccess: (state, action) => {
+    fetchDataSuccess: (state, action: PayloadAction<Job[]>) => {
       state.loading = false;
-      state.value = action.payload;
+      state.data = action.payload;
     },
-    fetchDataFailure: (state, action) => {
+    fetchDataFailure: (state, action: PayloadAction<string>) => {
       state.loading = false;
       state.error = action.payload;
     },

@@ -1,6 +1,10 @@
-import axios from 'axios';
+import axios from "axios";
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  // baseURL: "https://j-deploy.onrender.com/api",
+  baseURL: "https://job-shop.bipingiri77.com.np/api/",
+  headers: {
+    Accept: "*/*",
+    "Content-Type": "application/json",
+  },
 });
-
 export default api;

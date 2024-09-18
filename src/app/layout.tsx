@@ -1,11 +1,12 @@
-import ReduxProvider from "@/store/ReduxProvider";
+import ReduxProvider from "@/Store/ReduxProvider";
 import "./globals.css";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
+import "@mantine/core/styles.css";
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+// Import styles of packages that you've installed.
+// All packages except `@mantine/hooks` require styles imports
 
-export const metadata: Metadata = {
-  title: "JobShop",
+export const metadata = {
+  title: "Jobshop app",
   description: "Job portal Application",
 };
 
@@ -16,8 +17,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ReduxProvider>{children}</ReduxProvider>
+      <head>
+        <ColorSchemeScript />
+      </head>
+      <body>
+        <ReduxProvider>
+          <MantineProvider>{children}</MantineProvider>
+        </ReduxProvider>
       </body>
     </html>
   );
