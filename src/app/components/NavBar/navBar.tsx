@@ -37,6 +37,9 @@ import {
 } from "@tabler/icons-react";
 
 import classes from "./HeaderTabs.module.css";
+import { setSearchTerm } from "@/app/job/Redux/jobReducer";
+import { RootState } from "@/store/store";
+import { useDispatch, useSelector } from "react-redux";
 
 const user1 = {
   name: "Login",
@@ -52,6 +55,15 @@ const user2 = {
 const tabs = [];
 
 const NavBar = () => {
+  //search logic
+  const dispatch = useDispatch();
+  const searchTerm = useSelector((state: RootState) => state.job.searchTerm);
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setSearchTerm(e.target.value));
+  };
+
+  //mantine
   const theme = useMantineTheme();
   const [opened, { toggle }] = useDisclosure(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);
@@ -407,25 +419,15 @@ const NavBar = () => {
         >
           Transform your future with us!
         </h1>
-        <Autocomplete
-          aria-label="Search"
-          size="lg"
-          radius="xl"
-          leftSection={icon}
-          withScrollArea={true}
-          width={700}
-          placeholder="Search your job here..."
-          data={[
-            { group: "Full-Time", items: ["Waiter", "Chef"] },
-            { group: "Part-Time", items: ["Kitchen Helper", "Dishwasher"] },
-          ]}
-          comboboxProps={{
-            width: 250,
-            position: "top-start",
-            transitionProps: { transition: "pop", duration: 200 },
-            shadow: "md",
-          }}
-        />
+        <div className="">
+          <input
+            type="text"
+            placeholder="Search jobs..."
+            value={searchTerm} // Bind search term to input
+            onChange={handleSearch} // Handle search input change
+            className="pl-4 border rounded-full w-full"
+          />
+        </div>
       </div>
     </div>
   );

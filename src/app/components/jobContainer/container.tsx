@@ -8,24 +8,35 @@ import JobCard from "./jobCard";
 import Pagination from "./Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/Store/store";
-import { fetchData } from "@/app/job/Redux/jobReducer";
+import { fetchData, setSearchTerm } from "@/app/job/Redux/jobReducer";
 const Container: React.FC = () => {
   const [opened, { open, close }] = useDisclosure(false);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 
+  //redux logic
   const dispatch: AppDispatch = useDispatch();
   const data = useSelector((state: RootState) => state.job.data);
   const loading = useSelector((state: RootState) => state.job.loading);
   const error = useSelector((state: RootState) => state.job.error);
+  const searchTerm = useSelector((state: RootState) => state.job.searchTerm);
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
 
+  //selected job logic
   const handleCardClick = (job: Job) => {
     if (selectedJob?.id !== job.id) {
       setSelectedJob(job);
     }
   };
+
+  // Filter jobs based on search term
+  const filteredJobs = data.filter(
+    (job) =>
+      job.position?.en.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      job.location?.en.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      job.jobCategory?.name.en.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   // Pagination logic
 
@@ -34,7 +45,7 @@ const Container: React.FC = () => {
   const jobsPerPage = 16;
   const indexOfLastJob = currentPage * jobsPerPage;
   const indexOfFirstJob = indexOfLastJob - jobsPerPage;
-  const currentJobs = data.slice(indexOfFirstJob, indexOfLastJob);
+  const currentJobs = filteredJobs.slice(indexOfFirstJob, indexOfLastJob);
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 

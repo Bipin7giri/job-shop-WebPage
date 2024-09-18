@@ -4,12 +4,14 @@ interface JobState {
   data: Job[];
   loading: boolean;
   error: string | null;
+  searchTerm: string;
 }
 
 const initialState: JobState = {
   data: [],
   loading: false,
   error: null,
+  searchTerm: "",
 };
 export const jobSlice = createSlice({
   name: "job",
@@ -27,10 +29,13 @@ export const jobSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    setSearchTerm: (state, action: PayloadAction<string>) => {
+      state.searchTerm = action.payload;
+    },
   },
 });
 
-export const { fetchData, fetchDataSuccess, fetchDataFailure } =
+export const { fetchData, fetchDataSuccess, fetchDataFailure, setSearchTerm } =
   jobSlice.actions;
 
 export default jobSlice.reducer;
