@@ -27,7 +27,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/login/document"
+    "app/login/document",
+    "src/app/utils/cryptoUtils.ts
   ],
   "exclude": ["node_modules"]
 }
