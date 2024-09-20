@@ -4,9 +4,9 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { setLocalStorageItem } from "@/app/Utils/localStorageUtil";
+import { setLocalStorageItem } from "@/app/utils/localStorageUtil";
 import api from "@/app/api";
-import { encryptToken } from "@/app/Utils/cryptoUtils";
+import { encryptToken } from "@/app/utils/cryptoUtils";
 //import "react-toastify/dist/ReactToastify.css";
 //import { toast } from "react-toastify";
 

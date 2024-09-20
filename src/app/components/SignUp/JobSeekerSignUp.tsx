@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { setLocalStorageItem } from "@/app/utils/localStorageUtil";
+
 import api from "@/app/api";
 import { encryptToken } from "@/app/utils/cryptoUtils";
 //import "react-toastify/dist/ReactToastify.css";
@@ -41,9 +41,9 @@ const JobSeekerSignUpPage: React.FC = () => {
         setLoading(false);
         const encryptedToken = encryptToken(res.data.access_token);
         const isLoggedIn = encryptToken("true");
-        setLocalStorageItem("access_token", encryptedToken);
-        setLocalStorageItem("isLoggedIn", isLoggedIn);
-        setLocalStorageItem("jobSeeker", isLoggedIn);
+        // setLocalStorageItem("access_token", encryptedToken);
+        // setLocalStorageItem("isLoggedIn", isLoggedIn);
+        // setLocalStorageItem("jobSeeker", isLoggedIn);
         // setUser(res.data.data.user);
         // setLocalStorageItem('token_type', res.data.data.token_type);
         navigate("/");

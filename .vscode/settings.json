@@ -1,3 +1,13 @@
 {
-  "cSpell.words": ["extralight", "mantine", "reduxjs", "tailwindcss"]
+  "cSpell.words": [
+    "Autosize",
+    "clsx",
+    "extralight",
+    "mantine",
+    "reduxjs",
+    "Signup",
+    "tabler",
+    "tailwindcss",
+    "toastify"
+  ]
 }

@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-no-undef */
 import React from "react";
-import { Job } from "@/Store/types";
+import { Job } from "@/store/types";
 import { Tabs } from "@mantine/core";
-import Image from "next/image";
 
 import { Modal, Button, ScrollArea } from "@mantine/core";
 interface selectedJobProps {
