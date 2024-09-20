@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
-import { Job } from "@/Store/types";
+import { Job } from "@/store/types";
 import Card from "./Card";
-import { Loader } from "@mantine/core";
 
 import JobCard from "./jobCard";
 import Pagination from "./Pagination";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@/Store/store";
-import { fetchData, setSearchTerm } from "@/app/job/Redux/jobReducer";
+import { AppDispatch, RootState } from "@/store/store";
+import { fetchData } from "@/app/job/redux/jobReducer";
 const Container: React.FC = () => {
   const [opened, { open, close }] = useDisclosure(false);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);

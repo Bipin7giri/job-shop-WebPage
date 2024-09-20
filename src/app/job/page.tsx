@@ -1,6 +1,6 @@
 "use client";
 import { useSelector } from "react-redux";
-import { fetchData } from "./Redux/jobReducer";
+import { fetchData } from "./redux/jobReducer";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 const Page = () => {

@@ -1,6 +1,5 @@
-import { MdOutlineInfo } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
-import { Job } from "@/Store/types";
+import { Job } from "@/store/types";
 interface typeJob {
   job: Job;
   onHandleCardClick: (job: Job) => void;
@@ -68,12 +67,12 @@ const Card: React.FC<typeJob> = ({
         </li> */}
         <li className="flex flex-row  justify-between">
           {" "}
-          <div className="flex flex-row">
+          <p className="flex flex-row">
             <p className="pt-1">
               <IoLocationSharp />
             </p>
             {job.location?.en}
-          </div>
+          </p>
           <li>Full time</li>
         </li>
       </ul>

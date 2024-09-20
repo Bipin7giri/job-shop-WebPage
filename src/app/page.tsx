@@ -1,6 +1,6 @@
 "use client";
 
-import Container from "./components/JobContainer/container";
+import Container from "./components/jobContainer/container";
 import NavBar from "./components/NavBar/navBar";
 import Footer from "./components/Footer/detailsFooter";
 import FooterLink from "./components/Footer/footerlinks";

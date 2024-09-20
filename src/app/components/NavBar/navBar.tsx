@@ -2,42 +2,32 @@ import cx from "clsx";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { CiSearch } from "react-icons/ci";
+
 import {
   Container,
-  Avatar,
   UnstyledButton,
   Group,
   Text,
   Menu,
   Tabs,
-  Burger,
   rem,
   useMantineTheme,
-  MultiSelect,
-  Autocomplete,
 } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+
 import {
   IconLogout,
   IconHeart,
   IconStar,
   IconMessage,
-  IconSettings,
-  IconPlayerPause,
   IconTrash,
-  IconSwitchHorizontal,
   IconChevronDown,
   IconHelp,
-  IconStatusChange,
-  IconPassword,
   IconLanguage,
-  IconPasswordFingerprint,
   IconPasswordUser,
 } from "@tabler/icons-react";
 
 import classes from "./HeaderTabs.module.css";
-import { setSearchTerm } from "@/app/job/Redux/jobReducer";
+import { setSearchTerm } from "@/app/job/redux/jobReducer";
 import { RootState } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -52,8 +42,6 @@ const user2 = {
   image: "",
 };
 
-const tabs = [];
-
 const NavBar = () => {
   //search logic
   const dispatch = useDispatch();
@@ -65,15 +53,8 @@ const NavBar = () => {
 
   //mantine
   const theme = useMantineTheme();
-  const [opened, { toggle }] = useDisclosure(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);
 
-  const items = tabs.map((tab) => (
-    <Tabs.Tab value={tab} key={tab}>
-      {tab}
-    </Tabs.Tab>
-  ));
-  const icon = <CiSearch style={{ width: rem(16), height: rem(16) }} />;
   return (
     <div
       className={`classes.header  bg-[url('/job-shop.jpg')] bg-center  bg-[length:1270px_550px]  h-[28rem] w-auto  `}
@@ -82,26 +63,7 @@ const NavBar = () => {
         <Group justify="space-between ">
           {/* left section */}
           <Image src="/jobshop.png" width={100} height={80} alt="Job shop" />
-          {/* <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" /> */}
-          {/* <Autocomplete
-            aria-label="Search"
-            size="lg"
-            radius="xl"
-            leftSection={icon}
-            withScrollArea={true}
-            width={500}
-            placeholder="Search your job here..."
-            data={[
-              { group: "Full-Time", items: ["Waiter", "Chef"] },
-              { group: "Part-Time", items: ["Kitchen Helper", "Dishwasher"] },
-            ]}
-            comboboxProps={{
-              width: 250,
-              position: "bottom-start",
-              transitionProps: { transition: "pop", duration: 200 },
-              shadow: "md",
-            }}
-          /> */}
+
           {/* right section */}
 
           <div>
@@ -389,7 +351,7 @@ const NavBar = () => {
             tab: classes.tab,
           }}
         >
-          <Tabs.List>{items}</Tabs.List>
+          {/* <Tabs.List>{}</Tabs.List> */}
         </Tabs>
       </Container>
       <div
@@ -425,7 +387,7 @@ const NavBar = () => {
             placeholder="Search jobs..."
             value={searchTerm} // Bind search term to input
             onChange={handleSearch} // Handle search input change
-            className="pl-4 border rounded-full w-full"
+            className="pl-5 border rounded-full w-full"
           />
         </div>
       </div>
