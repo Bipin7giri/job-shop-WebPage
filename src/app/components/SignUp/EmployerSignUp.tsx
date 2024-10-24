@@ -2,11 +2,11 @@
 import Link from "next/link";
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { setLocalStorageItem } from "@/app/utils/localStorageUtil";
 import api from "@/app/api";
-import { encryptToken } from "@/app/utils/cryptoUtils";
+//import { encryptToken } from "@/app/utils/cryptoUtils";
 //import "react-toastify/dist/ReactToastify.css";
 //import { toast } from "react-toastify";
 
@@ -27,7 +27,7 @@ const EmployerSignUpPage: React.FC = () => {
     setModal(false);
   };
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const {
@@ -41,14 +41,14 @@ const EmployerSignUpPage: React.FC = () => {
       const res = await api.post("/signUp", data);
       if (res && res.data && res.data.access_token) {
         setLoading(false);
-        const encryptedToken = encryptToken(res.data.access_token);
-        const isLoggedIn = encryptToken("true");
-        setLocalStorageItem("access_token", encryptedToken);
-        setLocalStorageItem("isLoggedIn", isLoggedIn);
-        setLocalStorageItem("employer", isLoggedIn);
+        // const encryptedToken = encryptToken(res.data.access_token);
+        // const isLoggedIn = encryptToken("true");
+        // setLocalStorageItem("access_token", encryptedToken);
+        //  setLocalStorageItem("isLoggedIn", isLoggedIn);
+        //  setLocalStorageItem("employer", isLoggedIn);
         // setUser(res.data.data.user);
         // setLocalStorageItem('token_type', res.data.data.token_type);
-        navigate("/");
+        // navigate("/");
         // toast.success("Login Successfully", {
         //   position: "top-right",
         //   autoClose: 5000,

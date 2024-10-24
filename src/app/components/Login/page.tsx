@@ -3,11 +3,11 @@ import Link from "next/link";
 import React from "react";
 import { SegmentedControl } from "@mantine/core";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { useForm, SubmitHandler } from "react-hook-form";
 import { setLocalStorageItem } from "@/app/utils/localStorageUtil";
 import api from "@/app/api";
-import { encryptToken } from "@/app/utils/cryptoUtils";
+//import { encryptToken } from "@/app/utils/cryptoUtils";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 //import "react-toastify/dist/ReactToastify.css";
 //import { toast } from "react-toastify";
@@ -37,47 +37,47 @@ const LoginPage: React.FC = () => {
     formState: { errors },
   } = useForm<LoginFormInput>();
 
-  const onSubmit: SubmitHandler<LoginFormInput> = async (data) => {
-    try {
-      setLoading(true);
-      const res = await api.post("/loggedIn", data);
-      if (res && res.data && res.data.access_token) {
-        setLoading(false);
-        const encryptedToken = encryptToken(res.data.access_token);
-        const isLoggedIn = encryptToken("true");
-        setLocalStorageItem("access_token", encryptedToken);
-        setLocalStorageItem("isLoggedIn", isLoggedIn);
-        setLocalStorageItem("employer||jobseeker", isLoggedIn);
-        // setUser(res.data.data.user);
-        // setLocalStorageItem('token_type', res.data.data.token_type);
-        //navigate("/");
-        // toast.success("Login Successfully", {
-        //   position: "top-right",
-        //   autoClose: 5000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        //   theme: "light",
-        // });
-      }
-    } catch (error) {
-      debugger;
-      setLoading(false);
+  // const onSubmit: SubmitHandler<LoginFormInput> = async (data) => {
+  //   try {
+  //     setLoading(true);
+  //     const res = await api.post("/loggedIn", data);
+  //     if (res && res.data && res.data.access_token) {
+  //       setLoading(false);
+  //       const encryptedToken = encryptToken(res.data.access_token);
+  //       const isLoggedIn = encryptToken("true");
+  //       setLocalStorageItem("access_token", encryptedToken);
+  //       setLocalStorageItem("isLoggedIn", isLoggedIn);
+  //       setLocalStorageItem("employer||jobseeker", isLoggedIn);
+  //       // setUser(res.data.data.user);
+  //       // setLocalStorageItem('token_type', res.data.data.token_type);
+  //       //navigate("/");
+  //       // toast.success("Login Successfully", {
+  //       //   position: "top-right",
+  //       //   autoClose: 5000,
+  //       //   hideProgressBar: false,
+  //       //   closeOnClick: true,
+  //       //   pauseOnHover: true,
+  //       //   draggable: true,
+  //       //   progress: undefined,
+  //       //   theme: "light",
+  //       // });
+  //     }
+  //   } catch (error) {
+  //     debugger;
+  //     setLoading(false);
 
-      // toast.error(`Login failed: ${error}`, {
-      //   position: "top-right",
-      //   autoClose: 5000,
-      //   hideProgressBar: false,
-      //   closeOnClick: true,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      //   progress: undefined,
-      //   theme: "light",
-      // });
-    }
-  };
+  //     // toast.error(`Login failed: ${error}`, {
+  //     //   position: "top-right",
+  //     //   autoClose: 5000,
+  //     //   hideProgressBar: false,
+  //     //   closeOnClick: true,
+  //     //   pauseOnHover: true,
+  //     //   draggable: true,
+  //     //   progress: undefined,
+  //     //   theme: "light",
+  //     // });
+  //   }
+  // };
   return (
     <div className="flex flex-col items-center  min-h-screen py-2">
       <h1 className=" mb-5 text-5xl "> LOGO</h1>
