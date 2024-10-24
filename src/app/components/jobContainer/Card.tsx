@@ -49,8 +49,7 @@ const Card: React.FC<typeJob> = ({
                text-black-500 
             "
           >
-            {job.jobCategory?.name?.en}{" "}
-            {job.position?.en === "waiter" ? "" : job.position?.en}
+            {job.position?.en}
           </h1>
         </div>
         {/* <div>
