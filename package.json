@@ -23,7 +23,7 @@
     "@mantine/spotlight": "^7.10.2",
     "@mantine/tiptap": "^7.10.2",
     "@reduxjs/toolkit": "^1.9.5",
-    "@tabler/icons-react": "^3.7.0",
+    "@tabler/icons-react": "^3.19.0",
     "@tiptap/extension-link": "^2.4.0",
     "@tiptap/react": "^2.4.0",
     "@tiptap/starter-kit": "^2.4.0",
@@ -50,6 +50,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "@next/swc-win32-x64-msvc": "^15.0.0",
     "@types/node": "^20.6.2",
     "@types/react-redux": "^7.1.26",
     "eslint-config-next": "^14.2.13",

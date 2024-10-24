@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Text, Container, ActionIcon, Group, rem } from "@mantine/core";
 import {
   IconBrandTwitter,
